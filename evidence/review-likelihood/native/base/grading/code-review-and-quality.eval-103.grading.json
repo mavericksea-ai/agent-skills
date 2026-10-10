@@ -1,0 +1,39 @@
+{
+  "expectations": [
+    {
+      "id": 1,
+      "text": "Describes overselling as conditional on overlapping same-SKU calls, with the correct stale-read mechanism; does not invent deployment details.",
+      "passed": true,
+      "evidence": "Assistant describes: 'Two overlapping calls can both read available: 1, both pass line 3, both write 0 and both return true.' Overselling is framed as conditional: 'This blocks the merge unless same-SKU calls are proven serialized.' No deployment details are invented."
+    },
+    {
+      "id": 2,
+      "text": "Treats serialization as unknown, not proven absent or present; names dispatcher/lock evidence to check and withholds unconditional approval until verified or corrected. One async worker alone does NOT prove non-overlap across awaits. Asking about worker count is allowed, but treating \"one worker OR serialized requests\" as sufficient to approve or to rule out the race fails this criterion; require an actual guarantee of non-overlapping same-SKU calls.",
+      "passed": true,
+      "evidence": "Assistant explicitly states 'Running a single worker doesn't prevent this, because the awaits let calls interleave between lines 2 and 4' — correctly rejecting single-worker as sufficient. Names the dispatcher as evidence to check: 'does the dispatcher allow at most one in-flight reserve per SKU system-wide?' Withholds approval with 'Request changes' verdict pending this verification."
+    },
+    {
+      "id": 3,
+      "text": "For EVERY mandatory failure finding, including the main finding, either ground its trigger and relevant API/caller behavior in supplied facts, or explicitly request verification. A conditional concern is allowed; inventing reachability or claiming a missing-context defect is confirmed fails. Structural/readability requests are outside this criterion. Judge this separately from verdict consistency.",
+      "passed": true,
+      "evidence": "The main finding (check-then-act race) is grounded in the code structure: separate read/check/write with awaits enabling interleaving. The assistant explicitly requests verification of caller behavior: 'does the dispatcher allow at most one in-flight reserve per SKU system-wide?' The concern is presented conditionally ('unless same-SKU calls are proven serialized') rather than claiming confirmed reachability."
+    },
+    {
+      "id": 4,
+      "text": "The final merge recommendation agrees with the stated requirements. A conditional approval pending a named check is consistent. Request changes with an unsupported blocker can satisfy this consistency criterion: penalize the unsupported blocker only under grounding. Optional nits with approval are consistent.",
+      "passed": true,
+      "evidence": "Verdict is 'Request changes' with the blocker being unverified same-SKU serialization. This is consistent with the stated finding that the race is dangerous if overlapping same-SKU calls occur, and the request for dispatcher verification. The recommendation directly follows from the analysis."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1
+  },
+  "run": {
+    "executor_model": "claude-opus-5-5",
+    "grader_model": "unknown",
+    "timestamp": "2026-10-10T18:38:45.655Z"
+  }
+}

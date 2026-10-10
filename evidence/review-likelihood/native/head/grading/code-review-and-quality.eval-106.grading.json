@@ -1,0 +1,39 @@
+{
+  "expectations": [
+    {
+      "id": 1,
+      "text": "Treats injection safety as dependent on the missing wrapper behavior. Does not claim $1 syntax alone proves binding, nor claim the wrapper is definitely unsafe.",
+      "passed": true,
+      "evidence": "Assistant acknowledges '$1' is 'the standard parameterized pattern' but immediately qualifies: 'This line is only as safe as `db.query`.' It does not claim $1 alone proves binding, nor does it claim the wrapper is definitely unsafe—it frames it as unknown and requiring verification."
+    },
+    {
+      "id": 2,
+      "text": "Requests the wrapper implementation/driver contract or equivalent specific verification of true binding; makes its merge recommendation conditional on resolving this security-relevant uncertainty.",
+      "passed": true,
+      "evidence": "Assistant explicitly says 'Read its source and confirm it hands `(text, values)` to the driver's parameter binding.' The verdict is 'Approve conditionally. Merge only after the required check below passes.' This makes the merge recommendation conditional on verifying db.query's implementation."
+    },
+    {
+      "id": 3,
+      "text": "For EVERY mandatory failure finding, including the main finding, either ground its trigger and relevant API/caller behavior in supplied facts, or explicitly request verification. A conditional concern is allowed; inventing reachability or claiming a missing-context defect is confirmed fails. Structural/readability requests are outside this criterion. Judge this separately from verdict consistency.",
+      "passed": true,
+      "evidence": "Assistant states 'Confirmed failures: none.' The SQL injection concern is presented conditionally ('If it pastes values into the SQL text...', 'If it escapes only strings...'). No defect is asserted as confirmed without grounding. The typeof guard suggestion is nested under a conditional scenario, not presented as a confirmed bug."
+    },
+    {
+      "id": 4,
+      "text": "The final merge recommendation agrees with the stated requirements. A conditional approval pending a named check is consistent. Request changes with an unsupported blocker can satisfy this consistency criterion: penalize the unsupported blocker only under grounding. Optional nits with approval are consistent.",
+      "passed": true,
+      "evidence": "Verdict is 'Approve conditionally. Merge only after the required check below passes.' The named check is verifying db.query implements true parameter binding. This is a conditional approval pending a named check, which the expectation explicitly states is consistent."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1
+  },
+  "run": {
+    "executor_model": "claude-opus-5-5",
+    "grader_model": "unknown",
+    "timestamp": "2026-10-10T18:43:42.519Z"
+  }
+}

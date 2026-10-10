@@ -1,0 +1,1115 @@
+{
+  "schemaVersion": 1,
+  "claudeVersion": "2.1.296",
+  "startedAt": "2026-10-10T18:39:55.797Z",
+  "durationSeconds": 247,
+  "costUsd": 24.541026399999993,
+  "partial": false,
+  "suite": {
+    "root": "/workspace/work/driftproof-native-validation/plugin-edge",
+    "ablation": "with-without",
+    "modelOverride": "claude-opus-5-5",
+    "judgeModel": "claude-opus-4-6",
+    "threshold": 1,
+    "concurrency": 3,
+    "plugins": [
+      {
+        "name": "agent-skills",
+        "version": "0.6.12",
+        "path": "/workspace/work/driftproof-native-validation/plugin-edge"
+      }
+    ]
+  },
+  "aggregates": {
+    "casesTotal": 2,
+    "casesPassed": 2,
+    "overallScore": 1,
+    "overallPassRate": 1,
+    "meanDelta": 0
+  },
+  "publication_format": "review-likelihood-evidence/v1 (projection, not native results.json)",
+  "cases": [
+    {
+      "name": "case-107",
+      "dir": "evals/edge-workflow/case-107",
+      "source": "mixed",
+      "promptMarkdown": "If the code-review-and-quality skill is available, invoke it for this review. I want a code review across correctness, readability, security and performance before merging the reservation logic in stock.js and dispatcher.js. Read the repository files to establish the relevant deployment and API contracts. Review these two functions and their behavior in the documented deployment. Do not modify files or install packages. Run node probe.mjs and use the observed result in your review. Facts not present are unknown: ask for the missing evidence where necessary. Give a concise merge recommendation and material findings with file references. Avoid unrelated optional improvements.",
+      "runsPerCase": 3,
+      "timeoutSeconds": 240,
+      "maxTurns": 16,
+      "graders": [
+        {
+          "name": "criterion-1",
+          "type": "llm",
+          "weight": 1,
+          "graderMarkdown": "PASS only if the final review meets this criterion, using the trace to check its evidence:\nIdentifies that the finally block releases the lock before the returned reserve promise settles because the try returns without await. Connects this to overlapping calls and the observed two successful reservations against stock=1. Does not claim the presence of the lock prevents the race.\nFAIL if the answer contradicts it. Do not require the skill to have fired.",
+          "config": {
+            "criteria": "PASS only if the final review meets this criterion, using the trace to check its evidence:\nIdentifies that the finally block releases the lock before the returned reserve promise settles because the try returns without await. Connects this to overlapping calls and the observed two successful reservations against stock=1. Does not claim the presence of the lock prevents the race.\nFAIL if the answer contradicts it. Do not require the skill to have fired.",
+            "focus": "trace"
+          }
+        },
+        {
+          "name": "criterion-2",
+          "type": "llm",
+          "weight": 1,
+          "graderMarkdown": "PASS only if the final review meets this criterion, using the trace to check its evidence:\nRequires a fix before merge: hold the lock through the entire asynchronous operation (for example return await inside try/finally), or use another actually atomic reservation mechanism. A process-local lock can suffice under this one-worker exclusive-access deployment if correctly held.\nFAIL if the answer contradicts it. Do not require the skill to have fired.",
+          "config": {
+            "criteria": "PASS only if the final review meets this criterion, using the trace to check its evidence:\nRequires a fix before merge: hold the lock through the entire asynchronous operation (for example return await inside try/finally), or use another actually atomic reservation mechanism. A process-local lock can suffice under this one-worker exclusive-access deployment if correctly held.\nFAIL if the answer contradicts it. Do not require the skill to have fired.",
+            "focus": "trace"
+          }
+        },
+        {
+          "name": "criterion-3",
+          "type": "llm",
+          "weight": 1,
+          "graderMarkdown": "PASS only if the final review meets this criterion, using the trace to check its evidence:\nFor EVERY mandatory failure finding, including the main finding, either ground its trigger and relevant API/caller behavior in files read and tool results in the trace, or explicitly request verification. A conditional concern is allowed; inventing reachability or claiming a missing-context defect is confirmed fails. Structural/readability requests are outside this criterion. Judge this separately from verdict consistency.\nFAIL if the answer contradicts it. Do not require the skill to have fired.\nThe trace must establish that the relevant source and deployment files were inspected, whether through Read, Bash, or another available tool. Tool choice itself is not graded.",
+          "config": {
+            "criteria": "PASS only if the final review meets this criterion, using the trace to check its evidence:\nFor EVERY mandatory failure finding, including the main finding, either ground its trigger and relevant API/caller behavior in files read and tool results in the trace, or explicitly request verification. A conditional concern is allowed; inventing reachability or claiming a missing-context defect is confirmed fails. Structural/readability requests are outside this criterion. Judge this separately from verdict consistency.\nFAIL if the answer contradicts it. Do not require the skill to have fired.\nThe trace must establish that the relevant source and deployment files were inspected, whether through Read, Bash, or another available tool. Tool choice itself is not graded.",
+            "focus": "trace"
+          }
+        },
+        {
+          "name": "criterion-4",
+          "type": "llm",
+          "weight": 1,
+          "graderMarkdown": "PASS only if the final review meets this criterion, using the trace to check its evidence:\nThe final merge recommendation agrees with the stated requirements. A conditional approval pending a named check is consistent. Request changes with an unsupported blocker can satisfy this consistency criterion: penalize the unsupported blocker only under grounding. Optional nits with approval are consistent.\nFAIL if the answer contradicts it. Do not require the skill to have fired.",
+          "config": {
+            "criteria": "PASS only if the final review meets this criterion, using the trace to check its evidence:\nThe final merge recommendation agrees with the stated requirements. A conditional approval pending a named check is consistent. Request changes with an unsupported blocker can satisfy this consistency criterion: penalize the unsupported blocker only under grounding. Optional nits with approval are consistent.\nFAIL if the answer contradicts it. Do not require the skill to have fired.",
+            "focus": "trace"
+          }
+        },
+        {
+          "name": "skill-fired",
+          "type": "tool_used",
+          "weight": 1,
+          "config": {
+            "tool": "Skill",
+            "input_match": "\"skill\"\\s*:\\s*\"(?:[\\w-]+:)?(code-review-and-quality|review)\""
+          }
+        }
+      ],
+      "aggregates": {
+        "score": 1,
+        "passRate": 1,
+        "scoreWithout": 1,
+        "passRateWithout": 1,
+        "delta": 0
+      },
+      "arms": {
+        "with": [
+          {
+            "score": 1,
+            "passed": true,
+            "turns": 5,
+            "costUsd": 3.4669618,
+            "judgeCostUsd": 3.31055,
+            "durationSeconds": 90,
+            "startedAt": "2026-10-10T18:39:55.840Z",
+            "error": null,
+            "skippedPaidGraders": false,
+            "trace": "traces/case-107-with-1.jsonl",
+            "graders": [
+              {
+                "name": "criterion-1",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "84165a894838adb1a58008f289b553ea866e0e2109f18121d0450d9792e35a77",
+                "published_trace": "traces/case-107-with-1.jsonl"
+              },
+              {
+                "name": "criterion-2",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "84165a894838adb1a58008f289b553ea866e0e2109f18121d0450d9792e35a77",
+                "published_trace": "traces/case-107-with-1.jsonl"
+              },
+              {
+                "name": "criterion-3",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "84165a894838adb1a58008f289b553ea866e0e2109f18121d0450d9792e35a77",
+                "published_trace": "traces/case-107-with-1.jsonl"
+              },
+              {
+                "name": "criterion-4",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "84165a894838adb1a58008f289b553ea866e0e2109f18121d0450d9792e35a77",
+                "published_trace": "traces/case-107-with-1.jsonl"
+              },
+              {
+                "name": "skill-fired",
+                "passed": true,
+                "weight": 1,
+                "explanation": "Skill called 1x (expected 1..∞)",
+                "withOnly": true,
+                "scored": false
+              }
+            ]
+          },
+          {
+            "score": 1,
+            "passed": true,
+            "turns": 5,
+            "costUsd": 2.2483257999999995,
+            "judgeCostUsd": 2.0923049999999996,
+            "durationSeconds": 55,
+            "startedAt": "2026-10-10T18:39:55.840Z",
+            "error": null,
+            "skippedPaidGraders": false,
+            "trace": "traces/case-107-with-2.jsonl",
+            "graders": [
+              {
+                "name": "criterion-1",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "3febdb3423b1c2954c1a0afaa7130f1626242cc41f11c8323dc5fa2445b8d139",
+                "published_trace": "traces/case-107-with-2.jsonl"
+              },
+              {
+                "name": "criterion-2",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "3febdb3423b1c2954c1a0afaa7130f1626242cc41f11c8323dc5fa2445b8d139",
+                "published_trace": "traces/case-107-with-2.jsonl"
+              },
+              {
+                "name": "criterion-3",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "3febdb3423b1c2954c1a0afaa7130f1626242cc41f11c8323dc5fa2445b8d139",
+                "published_trace": "traces/case-107-with-2.jsonl"
+              },
+              {
+                "name": "criterion-4",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "3febdb3423b1c2954c1a0afaa7130f1626242cc41f11c8323dc5fa2445b8d139",
+                "published_trace": "traces/case-107-with-2.jsonl"
+              },
+              {
+                "name": "skill-fired",
+                "passed": true,
+                "weight": 1,
+                "explanation": "Skill called 1x (expected 1..∞)",
+                "withOnly": true,
+                "scored": false
+              }
+            ]
+          },
+          {
+            "score": 1,
+            "passed": true,
+            "turns": 5,
+            "costUsd": 2.4939681999999994,
+            "judgeCostUsd": 2.3394899999999996,
+            "durationSeconds": 60,
+            "startedAt": "2026-10-10T18:39:55.840Z",
+            "error": null,
+            "skippedPaidGraders": false,
+            "trace": "traces/case-107-with-3.jsonl",
+            "graders": [
+              {
+                "name": "criterion-1",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "b89b9a8715f45595cf578ed5ae3782f522a153dc199e0494024a2e88b027d038",
+                "published_trace": "traces/case-107-with-3.jsonl"
+              },
+              {
+                "name": "criterion-2",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "b89b9a8715f45595cf578ed5ae3782f522a153dc199e0494024a2e88b027d038",
+                "published_trace": "traces/case-107-with-3.jsonl"
+              },
+              {
+                "name": "criterion-3",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "b89b9a8715f45595cf578ed5ae3782f522a153dc199e0494024a2e88b027d038",
+                "published_trace": "traces/case-107-with-3.jsonl"
+              },
+              {
+                "name": "criterion-4",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "b89b9a8715f45595cf578ed5ae3782f522a153dc199e0494024a2e88b027d038",
+                "published_trace": "traces/case-107-with-3.jsonl"
+              },
+              {
+                "name": "skill-fired",
+                "passed": true,
+                "weight": 1,
+                "explanation": "Skill called 1x (expected 1..∞)",
+                "withOnly": true,
+                "scored": false
+              }
+            ]
+          }
+        ],
+        "without": [
+          {
+            "score": 1,
+            "passed": true,
+            "turns": 5,
+            "costUsd": 1.7949684000000006,
+            "judgeCostUsd": 1.6796150000000005,
+            "durationSeconds": 60,
+            "startedAt": "2026-10-10T18:40:50.936Z",
+            "error": null,
+            "skippedPaidGraders": false,
+            "trace": "traces/case-107-without-1.jsonl",
+            "graders": [
+              {
+                "name": "criterion-1",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "8b00eea4c5fd30007753f78612a5b72d18b6c5a951955b9981a89bb0fdef9976",
+                "published_trace": "traces/case-107-without-1.jsonl"
+              },
+              {
+                "name": "criterion-2",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "8b00eea4c5fd30007753f78612a5b72d18b6c5a951955b9981a89bb0fdef9976",
+                "published_trace": "traces/case-107-without-1.jsonl"
+              },
+              {
+                "name": "criterion-3",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "8b00eea4c5fd30007753f78612a5b72d18b6c5a951955b9981a89bb0fdef9976",
+                "published_trace": "traces/case-107-without-1.jsonl"
+              },
+              {
+                "name": "criterion-4",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "8b00eea4c5fd30007753f78612a5b72d18b6c5a951955b9981a89bb0fdef9976",
+                "published_trace": "traces/case-107-without-1.jsonl"
+              }
+            ]
+          },
+          {
+            "score": 1,
+            "passed": true,
+            "turns": 3,
+            "costUsd": 1.9296016,
+            "judgeCostUsd": 1.840475,
+            "durationSeconds": 46,
+            "startedAt": "2026-10-10T18:40:55.582Z",
+            "error": null,
+            "skippedPaidGraders": false,
+            "trace": "traces/case-107-without-2.jsonl",
+            "graders": [
+              {
+                "name": "criterion-1",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "0a67d00cd71bb649adcb2d4d47dfbcc9c5ba6226d8f3eb26c689119dda4501ee",
+                "published_trace": "traces/case-107-without-2.jsonl"
+              },
+              {
+                "name": "criterion-2",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "0a67d00cd71bb649adcb2d4d47dfbcc9c5ba6226d8f3eb26c689119dda4501ee",
+                "published_trace": "traces/case-107-without-2.jsonl"
+              },
+              {
+                "name": "criterion-3",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "0a67d00cd71bb649adcb2d4d47dfbcc9c5ba6226d8f3eb26c689119dda4501ee",
+                "published_trace": "traces/case-107-without-2.jsonl"
+              },
+              {
+                "name": "criterion-4",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "0a67d00cd71bb649adcb2d4d47dfbcc9c5ba6226d8f3eb26c689119dda4501ee",
+                "published_trace": "traces/case-107-without-2.jsonl"
+              }
+            ]
+          },
+          {
+            "score": 1,
+            "passed": true,
+            "turns": 3,
+            "costUsd": 1.7508507999999974,
+            "judgeCostUsd": 1.6632649999999973,
+            "durationSeconds": 61,
+            "startedAt": "2026-10-10T18:41:25.397Z",
+            "error": null,
+            "skippedPaidGraders": false,
+            "trace": "traces/case-107-without-3.jsonl",
+            "graders": [
+              {
+                "name": "criterion-1",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "94727de9dfd4a8b2e3346ea4b848597b9040f95fede65055e952622d2218d808",
+                "published_trace": "traces/case-107-without-3.jsonl"
+              },
+              {
+                "name": "criterion-2",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "94727de9dfd4a8b2e3346ea4b848597b9040f95fede65055e952622d2218d808",
+                "published_trace": "traces/case-107-without-3.jsonl"
+              },
+              {
+                "name": "criterion-3",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "94727de9dfd4a8b2e3346ea4b848597b9040f95fede65055e952622d2218d808",
+                "published_trace": "traces/case-107-without-3.jsonl"
+              },
+              {
+                "name": "criterion-4",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "94727de9dfd4a8b2e3346ea4b848597b9040f95fede65055e952622d2218d808",
+                "published_trace": "traces/case-107-without-3.jsonl"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "case-108",
+      "dir": "evals/edge-workflow/case-108",
+      "source": "mixed",
+      "promptMarkdown": "If the code-review-and-quality skill is available, invoke it for this review. I want a code review across correctness, readability, security and performance before merging the reservation logic in stock.js and dispatcher.js. Read the repository files to establish the relevant deployment and API contracts. Review these two functions and their behavior in the documented deployment. Do not modify files or install packages. Run node probe.mjs and use the observed result in your review. Facts not present are unknown: ask for the missing evidence where necessary. Give a concise merge recommendation and material findings with file references. Avoid unrelated optional improvements.",
+      "runsPerCase": 3,
+      "timeoutSeconds": 240,
+      "maxTurns": 16,
+      "graders": [
+        {
+          "name": "criterion-1",
+          "type": "llm",
+          "weight": 1,
+          "graderMarkdown": "PASS only if the final review meets this criterion, using the trace to check its evidence:\nIdentifies that each promise queue correctly serializes its own worker but there is no exclusion across the two workers sharing the store. Connects this to the observed two successful reservations against stock=1. Does not claim a per-process mutex or single-worker queue protects the shared database across workers.\nFAIL if the answer contradicts it. Do not require the skill to have fired.",
+          "config": {
+            "criteria": "PASS only if the final review meets this criterion, using the trace to check its evidence:\nIdentifies that each promise queue correctly serializes its own worker but there is no exclusion across the two workers sharing the store. Connects this to the observed two successful reservations against stock=1. Does not claim a per-process mutex or single-worker queue protects the shared database across workers.\nFAIL if the answer contradicts it. Do not require the skill to have fired.",
+            "focus": "trace"
+          }
+        },
+        {
+          "name": "criterion-2",
+          "type": "llm",
+          "weight": 1,
+          "graderMarkdown": "PASS only if the final review meets this criterion, using the trace to check its evidence:\nRequires a fix before merge that coordinates all workers, such as a database atomic conditional decrement/transaction with appropriate concurrency guarantees, or shared exclusion. Merely adding another process-local queue is not sufficient.\nFAIL if the answer contradicts it. Do not require the skill to have fired.",
+          "config": {
+            "criteria": "PASS only if the final review meets this criterion, using the trace to check its evidence:\nRequires a fix before merge that coordinates all workers, such as a database atomic conditional decrement/transaction with appropriate concurrency guarantees, or shared exclusion. Merely adding another process-local queue is not sufficient.\nFAIL if the answer contradicts it. Do not require the skill to have fired.",
+            "focus": "trace"
+          }
+        },
+        {
+          "name": "criterion-3",
+          "type": "llm",
+          "weight": 1,
+          "graderMarkdown": "PASS only if the final review meets this criterion, using the trace to check its evidence:\nFor EVERY mandatory failure finding, including the main finding, either ground its trigger and relevant API/caller behavior in files read and tool results in the trace, or explicitly request verification. A conditional concern is allowed; inventing reachability or claiming a missing-context defect is confirmed fails. Structural/readability requests are outside this criterion. Judge this separately from verdict consistency.\nFAIL if the answer contradicts it. Do not require the skill to have fired.\nThe trace must establish that the relevant source and deployment files were inspected, whether through Read, Bash, or another available tool. Tool choice itself is not graded.",
+          "config": {
+            "criteria": "PASS only if the final review meets this criterion, using the trace to check its evidence:\nFor EVERY mandatory failure finding, including the main finding, either ground its trigger and relevant API/caller behavior in files read and tool results in the trace, or explicitly request verification. A conditional concern is allowed; inventing reachability or claiming a missing-context defect is confirmed fails. Structural/readability requests are outside this criterion. Judge this separately from verdict consistency.\nFAIL if the answer contradicts it. Do not require the skill to have fired.\nThe trace must establish that the relevant source and deployment files were inspected, whether through Read, Bash, or another available tool. Tool choice itself is not graded.",
+            "focus": "trace"
+          }
+        },
+        {
+          "name": "criterion-4",
+          "type": "llm",
+          "weight": 1,
+          "graderMarkdown": "PASS only if the final review meets this criterion, using the trace to check its evidence:\nThe final merge recommendation agrees with the stated requirements. A conditional approval pending a named check is consistent. Request changes with an unsupported blocker can satisfy this consistency criterion: penalize the unsupported blocker only under grounding. Optional nits with approval are consistent.\nFAIL if the answer contradicts it. Do not require the skill to have fired.",
+          "config": {
+            "criteria": "PASS only if the final review meets this criterion, using the trace to check its evidence:\nThe final merge recommendation agrees with the stated requirements. A conditional approval pending a named check is consistent. Request changes with an unsupported blocker can satisfy this consistency criterion: penalize the unsupported blocker only under grounding. Optional nits with approval are consistent.\nFAIL if the answer contradicts it. Do not require the skill to have fired.",
+            "focus": "trace"
+          }
+        },
+        {
+          "name": "skill-fired",
+          "type": "tool_used",
+          "weight": 1,
+          "config": {
+            "tool": "Skill",
+            "input_match": "\"skill\"\\s*:\\s*\"(?:[\\w-]+:)?(code-review-and-quality|review)\""
+          }
+        }
+      ],
+      "aggregates": {
+        "score": 1,
+        "passRate": 1,
+        "scoreWithout": 1,
+        "passRateWithout": 1,
+        "delta": 0
+      },
+      "arms": {
+        "with": [
+          {
+            "score": 1,
+            "passed": true,
+            "turns": 5,
+            "costUsd": 1.5779257999999985,
+            "judgeCostUsd": 1.4294249999999984,
+            "durationSeconds": 52,
+            "startedAt": "2026-10-10T18:41:41.449Z",
+            "error": null,
+            "skippedPaidGraders": false,
+            "trace": "traces/case-108-with-1.jsonl",
+            "graders": [
+              {
+                "name": "criterion-1",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "678c238d0fb57d03c26ccf005baa5509ce056c63336da081e62c3c06cf355a1c",
+                "published_trace": "traces/case-108-with-1.jsonl"
+              },
+              {
+                "name": "criterion-2",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "678c238d0fb57d03c26ccf005baa5509ce056c63336da081e62c3c06cf355a1c",
+                "published_trace": "traces/case-108-with-1.jsonl"
+              },
+              {
+                "name": "criterion-3",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "678c238d0fb57d03c26ccf005baa5509ce056c63336da081e62c3c06cf355a1c",
+                "published_trace": "traces/case-108-with-1.jsonl"
+              },
+              {
+                "name": "criterion-4",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "678c238d0fb57d03c26ccf005baa5509ce056c63336da081e62c3c06cf355a1c",
+                "published_trace": "traces/case-108-with-1.jsonl"
+              },
+              {
+                "name": "skill-fired",
+                "passed": true,
+                "weight": 1,
+                "explanation": "Skill called 1x (expected 1..∞)",
+                "withOnly": true,
+                "scored": false
+              }
+            ]
+          },
+          {
+            "score": 1,
+            "passed": true,
+            "turns": 5,
+            "costUsd": 3.1056387999999995,
+            "judgeCostUsd": 2.9556999999999993,
+            "durationSeconds": 84,
+            "startedAt": "2026-10-10T18:41:50.626Z",
+            "error": null,
+            "skippedPaidGraders": false,
+            "trace": "traces/case-108-with-2.jsonl",
+            "graders": [
+              {
+                "name": "criterion-1",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "6ccff7539067e07f63746ed95a56f23d4fda7c9d530995151c2e44ff299086f5",
+                "published_trace": "traces/case-108-with-2.jsonl"
+              },
+              {
+                "name": "criterion-2",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "6ccff7539067e07f63746ed95a56f23d4fda7c9d530995151c2e44ff299086f5",
+                "published_trace": "traces/case-108-with-2.jsonl"
+              },
+              {
+                "name": "criterion-3",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "6ccff7539067e07f63746ed95a56f23d4fda7c9d530995151c2e44ff299086f5",
+                "published_trace": "traces/case-108-with-2.jsonl"
+              },
+              {
+                "name": "criterion-4",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "6ccff7539067e07f63746ed95a56f23d4fda7c9d530995151c2e44ff299086f5",
+                "published_trace": "traces/case-108-with-2.jsonl"
+              },
+              {
+                "name": "skill-fired",
+                "passed": true,
+                "weight": 1,
+                "explanation": "Skill called 1x (expected 1..∞)",
+                "withOnly": true,
+                "scored": false
+              }
+            ]
+          },
+          {
+            "score": 1,
+            "passed": true,
+            "turns": 5,
+            "costUsd": 1.919168199999999,
+            "judgeCostUsd": 1.768769999999999,
+            "durationSeconds": 47,
+            "startedAt": "2026-10-10T18:42:26.425Z",
+            "error": null,
+            "skippedPaidGraders": false,
+            "trace": "traces/case-108-with-3.jsonl",
+            "graders": [
+              {
+                "name": "criterion-1",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "c068704ca04ea8561a60806819474dd6a5ad14a8e78e97377ea80ce7cc10b64a",
+                "published_trace": "traces/case-108-with-3.jsonl"
+              },
+              {
+                "name": "criterion-2",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "c068704ca04ea8561a60806819474dd6a5ad14a8e78e97377ea80ce7cc10b64a",
+                "published_trace": "traces/case-108-with-3.jsonl"
+              },
+              {
+                "name": "criterion-3",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "c068704ca04ea8561a60806819474dd6a5ad14a8e78e97377ea80ce7cc10b64a",
+                "published_trace": "traces/case-108-with-3.jsonl"
+              },
+              {
+                "name": "criterion-4",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "c068704ca04ea8561a60806819474dd6a5ad14a8e78e97377ea80ce7cc10b64a",
+                "published_trace": "traces/case-108-with-3.jsonl"
+              },
+              {
+                "name": "skill-fired",
+                "passed": true,
+                "weight": 1,
+                "explanation": "Skill called 1x (expected 1..∞)",
+                "withOnly": true,
+                "scored": false
+              }
+            ]
+          }
+        ],
+        "without": [
+          {
+            "score": 1,
+            "passed": true,
+            "turns": 3,
+            "costUsd": 1.9306559999999988,
+            "judgeCostUsd": 1.8445099999999988,
+            "durationSeconds": 52,
+            "startedAt": "2026-10-10T18:42:32.961Z",
+            "error": null,
+            "skippedPaidGraders": false,
+            "trace": "traces/case-108-without-1.jsonl",
+            "graders": [
+              {
+                "name": "criterion-1",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "090255dda1b55cb7caa98347086480885f090e626f6072a4445ad394edfe6cc7",
+                "published_trace": "traces/case-108-without-1.jsonl"
+              },
+              {
+                "name": "criterion-2",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "090255dda1b55cb7caa98347086480885f090e626f6072a4445ad394edfe6cc7",
+                "published_trace": "traces/case-108-without-1.jsonl"
+              },
+              {
+                "name": "criterion-3",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "090255dda1b55cb7caa98347086480885f090e626f6072a4445ad394edfe6cc7",
+                "published_trace": "traces/case-108-without-1.jsonl"
+              },
+              {
+                "name": "criterion-4",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "090255dda1b55cb7caa98347086480885f090e626f6072a4445ad394edfe6cc7",
+                "published_trace": "traces/case-108-without-1.jsonl"
+              }
+            ]
+          },
+          {
+            "score": 1,
+            "passed": true,
+            "turns": 3,
+            "costUsd": 1.2579467999999994,
+            "judgeCostUsd": 1.1718899999999994,
+            "durationSeconds": 49,
+            "startedAt": "2026-10-10T18:43:13.382Z",
+            "error": null,
+            "skippedPaidGraders": false,
+            "trace": "traces/case-108-without-2.jsonl",
+            "graders": [
+              {
+                "name": "criterion-1",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "eecf49d58c1d2f478c9ae1cebe8bb5f22bb0afe0775122bcbee26ae978cf9d8b",
+                "published_trace": "traces/case-108-without-2.jsonl"
+              },
+              {
+                "name": "criterion-2",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "eecf49d58c1d2f478c9ae1cebe8bb5f22bb0afe0775122bcbee26ae978cf9d8b",
+                "published_trace": "traces/case-108-without-2.jsonl"
+              },
+              {
+                "name": "criterion-3",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "eecf49d58c1d2f478c9ae1cebe8bb5f22bb0afe0775122bcbee26ae978cf9d8b",
+                "published_trace": "traces/case-108-without-2.jsonl"
+              },
+              {
+                "name": "criterion-4",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "eecf49d58c1d2f478c9ae1cebe8bb5f22bb0afe0775122bcbee26ae978cf9d8b",
+                "published_trace": "traces/case-108-without-2.jsonl"
+              }
+            ]
+          },
+          {
+            "score": 1,
+            "passed": true,
+            "turns": 3,
+            "costUsd": 1.0650142000000022,
+            "judgeCostUsd": 0.9777000000000022,
+            "durationSeconds": 41,
+            "startedAt": "2026-10-10T18:43:15.091Z",
+            "error": null,
+            "skippedPaidGraders": false,
+            "trace": "traces/case-108-without-3.jsonl",
+            "graders": [
+              {
+                "name": "criterion-1",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "b08fb1280139cd165d18a4a69a87100c95a1b35df6960dd43f6992bae26c33fe",
+                "published_trace": "traces/case-108-without-3.jsonl"
+              },
+              {
+                "name": "criterion-2",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "b08fb1280139cd165d18a4a69a87100c95a1b35df6960dd43f6992bae26c33fe",
+                "published_trace": "traces/case-108-without-3.jsonl"
+              },
+              {
+                "name": "criterion-3",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "b08fb1280139cd165d18a4a69a87100c95a1b35df6960dd43f6992bae26c33fe",
+                "published_trace": "traces/case-108-without-3.jsonl"
+              },
+              {
+                "name": "criterion-4",
+                "passed": true,
+                "weight": 1,
+                "explanation": "judge votes: PASS PASS PASS",
+                "withOnly": false,
+                "scored": true,
+                "judgeVotes": [
+                  true,
+                  true,
+                  true
+                ],
+                "evidence_source_sha256": "b08fb1280139cd165d18a4a69a87100c95a1b35df6960dd43f6992bae26c33fe",
+                "published_trace": "traces/case-108-without-3.jsonl"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

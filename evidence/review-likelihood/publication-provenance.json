@@ -1,0 +1,957 @@
+{
+  "policy": "Original raw files remain local. Published projections are not byte-identical native records. Digests support integrity comparison, not independent execution attestation.",
+  "files": [
+    {
+      "source": "fixtures/case-101/case.yaml",
+      "source_sha256": "fdf1de6af55b3b38521d5818d351ba9b8bc3e49f8c64894b5931eab34a8bdd25",
+      "published": "fixtures/case-101/case.yaml",
+      "published_sha256": "fdf1de6af55b3b38521d5818d351ba9b8bc3e49f8c64894b5931eab34a8bdd25",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-101/fixture.sh",
+      "source_sha256": "adc3fc18ff9d2241a2af4e8d0f794b9a141f0f3528e80d509382ea6956de727b",
+      "published": "fixtures/case-101/fixture.sh",
+      "published_sha256": "adc3fc18ff9d2241a2af4e8d0f794b9a141f0f3528e80d509382ea6956de727b",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-101/graders/criterion-1.md",
+      "source_sha256": "7e75a7a8ec3ac6704246460057dc402d1d59fa687d216a233a64a30d71e81a43",
+      "published": "fixtures/case-101/graders/criterion-1.md",
+      "published_sha256": "7e75a7a8ec3ac6704246460057dc402d1d59fa687d216a233a64a30d71e81a43",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-101/graders/criterion-2.md",
+      "source_sha256": "8acecd80d8c5acf31e2943cf8ac0ab721eae99071f9774a7550b4d33e9e9887a",
+      "published": "fixtures/case-101/graders/criterion-2.md",
+      "published_sha256": "8acecd80d8c5acf31e2943cf8ac0ab721eae99071f9774a7550b4d33e9e9887a",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-101/graders/criterion-3.md",
+      "source_sha256": "a648c26a8589575ac01478f71d70d304fd142226300da8989bb950134e2ed8a7",
+      "published": "fixtures/case-101/graders/criterion-3.md",
+      "published_sha256": "a648c26a8589575ac01478f71d70d304fd142226300da8989bb950134e2ed8a7",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-101/graders/criterion-4.md",
+      "source_sha256": "0f4384d7902e801c93a18f57a6fb5cef66b2c19d207ce0ba55d59c9d68550e9b",
+      "published": "fixtures/case-101/graders/criterion-4.md",
+      "published_sha256": "0f4384d7902e801c93a18f57a6fb5cef66b2c19d207ce0ba55d59c9d68550e9b",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-101/graders/skill-fired.md",
+      "source_sha256": "ade80103447b09a46b45f1b958e70fd86fc0c07acffd3c4b0c50dc0b2a8f77af",
+      "published": "fixtures/case-101/graders/skill-fired.md",
+      "published_sha256": "ade80103447b09a46b45f1b958e70fd86fc0c07acffd3c4b0c50dc0b2a8f77af",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-101/prompt.md",
+      "source_sha256": "35d88056b749f01c73a47b909f64bea7c72502bc17665b0a225019f1b439ee22",
+      "published": "fixtures/case-101/prompt.md",
+      "published_sha256": "35d88056b749f01c73a47b909f64bea7c72502bc17665b0a225019f1b439ee22",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-102/case.yaml",
+      "source_sha256": "74937dd3ab53cb3c629204562d8f58e6428e6a21d1e200d009e5ec76f315d9cd",
+      "published": "fixtures/case-102/case.yaml",
+      "published_sha256": "74937dd3ab53cb3c629204562d8f58e6428e6a21d1e200d009e5ec76f315d9cd",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-102/fixture.sh",
+      "source_sha256": "e39ea906ee32b4d112aba9a077a087881dd40b2e7f13915e6b56effd225dfae6",
+      "published": "fixtures/case-102/fixture.sh",
+      "published_sha256": "e39ea906ee32b4d112aba9a077a087881dd40b2e7f13915e6b56effd225dfae6",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-102/graders/criterion-1.md",
+      "source_sha256": "ca5156d960625e8d5516417c62e42743db0217cc2d42610c3e2cace6a8cb2ade",
+      "published": "fixtures/case-102/graders/criterion-1.md",
+      "published_sha256": "ca5156d960625e8d5516417c62e42743db0217cc2d42610c3e2cace6a8cb2ade",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-102/graders/criterion-2.md",
+      "source_sha256": "f2bf605420e9554d7dd44afeadd2b618779544d6bb48f232218ece9860f73463",
+      "published": "fixtures/case-102/graders/criterion-2.md",
+      "published_sha256": "f2bf605420e9554d7dd44afeadd2b618779544d6bb48f232218ece9860f73463",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-102/graders/criterion-3.md",
+      "source_sha256": "a648c26a8589575ac01478f71d70d304fd142226300da8989bb950134e2ed8a7",
+      "published": "fixtures/case-102/graders/criterion-3.md",
+      "published_sha256": "a648c26a8589575ac01478f71d70d304fd142226300da8989bb950134e2ed8a7",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-102/graders/criterion-4.md",
+      "source_sha256": "0f4384d7902e801c93a18f57a6fb5cef66b2c19d207ce0ba55d59c9d68550e9b",
+      "published": "fixtures/case-102/graders/criterion-4.md",
+      "published_sha256": "0f4384d7902e801c93a18f57a6fb5cef66b2c19d207ce0ba55d59c9d68550e9b",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-102/graders/skill-fired.md",
+      "source_sha256": "ade80103447b09a46b45f1b958e70fd86fc0c07acffd3c4b0c50dc0b2a8f77af",
+      "published": "fixtures/case-102/graders/skill-fired.md",
+      "published_sha256": "ade80103447b09a46b45f1b958e70fd86fc0c07acffd3c4b0c50dc0b2a8f77af",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-102/prompt.md",
+      "source_sha256": "35d88056b749f01c73a47b909f64bea7c72502bc17665b0a225019f1b439ee22",
+      "published": "fixtures/case-102/prompt.md",
+      "published_sha256": "35d88056b749f01c73a47b909f64bea7c72502bc17665b0a225019f1b439ee22",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-103/case.yaml",
+      "source_sha256": "ca915f46fc78f8d95f5bbf10935c903bc1f9adaa7af0809dbc14a41305bae05b",
+      "published": "fixtures/case-103/case.yaml",
+      "published_sha256": "ca915f46fc78f8d95f5bbf10935c903bc1f9adaa7af0809dbc14a41305bae05b",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-103/fixture.sh",
+      "source_sha256": "68424a7621fe1fdfda200f1e46bb30bd83a26933e4faae8210d7b3c80c0fc374",
+      "published": "fixtures/case-103/fixture.sh",
+      "published_sha256": "68424a7621fe1fdfda200f1e46bb30bd83a26933e4faae8210d7b3c80c0fc374",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-103/graders/criterion-1.md",
+      "source_sha256": "20587e57c7c46e822c766e1c39d8cd1fadb73e253c0a3eb7b6780e461d17d58e",
+      "published": "fixtures/case-103/graders/criterion-1.md",
+      "published_sha256": "20587e57c7c46e822c766e1c39d8cd1fadb73e253c0a3eb7b6780e461d17d58e",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-103/graders/criterion-2.md",
+      "source_sha256": "8f7cfc75d14dee765a9857a9df1747c2505ba30bd40b9ee3f60fe0f92dbad693",
+      "published": "fixtures/case-103/graders/criterion-2.md",
+      "published_sha256": "8f7cfc75d14dee765a9857a9df1747c2505ba30bd40b9ee3f60fe0f92dbad693",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-103/graders/criterion-3.md",
+      "source_sha256": "a648c26a8589575ac01478f71d70d304fd142226300da8989bb950134e2ed8a7",
+      "published": "fixtures/case-103/graders/criterion-3.md",
+      "published_sha256": "a648c26a8589575ac01478f71d70d304fd142226300da8989bb950134e2ed8a7",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-103/graders/criterion-4.md",
+      "source_sha256": "0f4384d7902e801c93a18f57a6fb5cef66b2c19d207ce0ba55d59c9d68550e9b",
+      "published": "fixtures/case-103/graders/criterion-4.md",
+      "published_sha256": "0f4384d7902e801c93a18f57a6fb5cef66b2c19d207ce0ba55d59c9d68550e9b",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-103/graders/skill-fired.md",
+      "source_sha256": "ade80103447b09a46b45f1b958e70fd86fc0c07acffd3c4b0c50dc0b2a8f77af",
+      "published": "fixtures/case-103/graders/skill-fired.md",
+      "published_sha256": "ade80103447b09a46b45f1b958e70fd86fc0c07acffd3c4b0c50dc0b2a8f77af",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-103/prompt.md",
+      "source_sha256": "8534bc1800835e85f7dd275921a847caf2aa2f949b97c61dffcb8e7b537a86dd",
+      "published": "fixtures/case-103/prompt.md",
+      "published_sha256": "8534bc1800835e85f7dd275921a847caf2aa2f949b97c61dffcb8e7b537a86dd",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-104/case.yaml",
+      "source_sha256": "b8d61c2e47a14bc4b0527a34d701211f1d6400d92e9af2fbd9b2301b46bfe324",
+      "published": "fixtures/case-104/case.yaml",
+      "published_sha256": "b8d61c2e47a14bc4b0527a34d701211f1d6400d92e9af2fbd9b2301b46bfe324",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-104/fixture.sh",
+      "source_sha256": "b3b56afbda7954da548ceb218af1ae99234c0a398b7440ec86db4c32403c97a6",
+      "published": "fixtures/case-104/fixture.sh",
+      "published_sha256": "b3b56afbda7954da548ceb218af1ae99234c0a398b7440ec86db4c32403c97a6",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-104/graders/criterion-1.md",
+      "source_sha256": "79ca21fee3f7de786a7f6dda54598b14355228b9cb04dd87069015559a945328",
+      "published": "fixtures/case-104/graders/criterion-1.md",
+      "published_sha256": "79ca21fee3f7de786a7f6dda54598b14355228b9cb04dd87069015559a945328",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-104/graders/criterion-2.md",
+      "source_sha256": "f1a3dc307150bcba481bac53b02aa2aa5d35b42b057ac5cb81ebb8b96c20e4db",
+      "published": "fixtures/case-104/graders/criterion-2.md",
+      "published_sha256": "f1a3dc307150bcba481bac53b02aa2aa5d35b42b057ac5cb81ebb8b96c20e4db",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-104/graders/criterion-3.md",
+      "source_sha256": "a648c26a8589575ac01478f71d70d304fd142226300da8989bb950134e2ed8a7",
+      "published": "fixtures/case-104/graders/criterion-3.md",
+      "published_sha256": "a648c26a8589575ac01478f71d70d304fd142226300da8989bb950134e2ed8a7",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-104/graders/criterion-4.md",
+      "source_sha256": "0f4384d7902e801c93a18f57a6fb5cef66b2c19d207ce0ba55d59c9d68550e9b",
+      "published": "fixtures/case-104/graders/criterion-4.md",
+      "published_sha256": "0f4384d7902e801c93a18f57a6fb5cef66b2c19d207ce0ba55d59c9d68550e9b",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-104/graders/skill-fired.md",
+      "source_sha256": "ade80103447b09a46b45f1b958e70fd86fc0c07acffd3c4b0c50dc0b2a8f77af",
+      "published": "fixtures/case-104/graders/skill-fired.md",
+      "published_sha256": "ade80103447b09a46b45f1b958e70fd86fc0c07acffd3c4b0c50dc0b2a8f77af",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-104/prompt.md",
+      "source_sha256": "1d5c8941572dbb01fd77d56497ab8905e07b82a6fbfd8ab47498cdf1108513cb",
+      "published": "fixtures/case-104/prompt.md",
+      "published_sha256": "1d5c8941572dbb01fd77d56497ab8905e07b82a6fbfd8ab47498cdf1108513cb",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-105/case.yaml",
+      "source_sha256": "96598c9c3ace339595be341785808191ddf30cb59ff5f15cbe0c267e0b2dd7b0",
+      "published": "fixtures/case-105/case.yaml",
+      "published_sha256": "96598c9c3ace339595be341785808191ddf30cb59ff5f15cbe0c267e0b2dd7b0",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-105/fixture.sh",
+      "source_sha256": "6a1d700cc7730a62cdc260d992b7174f19ea173d6b5061e919d57e3bd0047ac5",
+      "published": "fixtures/case-105/fixture.sh",
+      "published_sha256": "6a1d700cc7730a62cdc260d992b7174f19ea173d6b5061e919d57e3bd0047ac5",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-105/graders/criterion-1.md",
+      "source_sha256": "b3bba2f0c6a57d97ff0cfc6c1cc1647227cab4f0219ab744313fbddcdf735b32",
+      "published": "fixtures/case-105/graders/criterion-1.md",
+      "published_sha256": "b3bba2f0c6a57d97ff0cfc6c1cc1647227cab4f0219ab744313fbddcdf735b32",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-105/graders/criterion-2.md",
+      "source_sha256": "123953e2b229865849b78c2df1485f52ffb129379ab0f2e1264df7db401938d2",
+      "published": "fixtures/case-105/graders/criterion-2.md",
+      "published_sha256": "123953e2b229865849b78c2df1485f52ffb129379ab0f2e1264df7db401938d2",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-105/graders/criterion-3.md",
+      "source_sha256": "a648c26a8589575ac01478f71d70d304fd142226300da8989bb950134e2ed8a7",
+      "published": "fixtures/case-105/graders/criterion-3.md",
+      "published_sha256": "a648c26a8589575ac01478f71d70d304fd142226300da8989bb950134e2ed8a7",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-105/graders/criterion-4.md",
+      "source_sha256": "0f4384d7902e801c93a18f57a6fb5cef66b2c19d207ce0ba55d59c9d68550e9b",
+      "published": "fixtures/case-105/graders/criterion-4.md",
+      "published_sha256": "0f4384d7902e801c93a18f57a6fb5cef66b2c19d207ce0ba55d59c9d68550e9b",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-105/graders/skill-fired.md",
+      "source_sha256": "ade80103447b09a46b45f1b958e70fd86fc0c07acffd3c4b0c50dc0b2a8f77af",
+      "published": "fixtures/case-105/graders/skill-fired.md",
+      "published_sha256": "ade80103447b09a46b45f1b958e70fd86fc0c07acffd3c4b0c50dc0b2a8f77af",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-105/prompt.md",
+      "source_sha256": "1d5c8941572dbb01fd77d56497ab8905e07b82a6fbfd8ab47498cdf1108513cb",
+      "published": "fixtures/case-105/prompt.md",
+      "published_sha256": "1d5c8941572dbb01fd77d56497ab8905e07b82a6fbfd8ab47498cdf1108513cb",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-106/case.yaml",
+      "source_sha256": "f44cd6f49d14364124d9e24eec0267365fbfd20aedd902d0e804e2ce36ec1224",
+      "published": "fixtures/case-106/case.yaml",
+      "published_sha256": "f44cd6f49d14364124d9e24eec0267365fbfd20aedd902d0e804e2ce36ec1224",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-106/fixture.sh",
+      "source_sha256": "2eb3074f12343feebf4c4c9bd8522f878ce718155d3349f6672c615ba6fc4cff",
+      "published": "fixtures/case-106/fixture.sh",
+      "published_sha256": "2eb3074f12343feebf4c4c9bd8522f878ce718155d3349f6672c615ba6fc4cff",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-106/graders/criterion-1.md",
+      "source_sha256": "b3de91bfea75636ff1fef4c105e98525d1e455616041a95ed9de294ad9762028",
+      "published": "fixtures/case-106/graders/criterion-1.md",
+      "published_sha256": "b3de91bfea75636ff1fef4c105e98525d1e455616041a95ed9de294ad9762028",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-106/graders/criterion-2.md",
+      "source_sha256": "92471c965f87a32bc427fe737568a52d11d0b6b72e926097d5035017ca9b5991",
+      "published": "fixtures/case-106/graders/criterion-2.md",
+      "published_sha256": "92471c965f87a32bc427fe737568a52d11d0b6b72e926097d5035017ca9b5991",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-106/graders/criterion-3.md",
+      "source_sha256": "a648c26a8589575ac01478f71d70d304fd142226300da8989bb950134e2ed8a7",
+      "published": "fixtures/case-106/graders/criterion-3.md",
+      "published_sha256": "a648c26a8589575ac01478f71d70d304fd142226300da8989bb950134e2ed8a7",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-106/graders/criterion-4.md",
+      "source_sha256": "0f4384d7902e801c93a18f57a6fb5cef66b2c19d207ce0ba55d59c9d68550e9b",
+      "published": "fixtures/case-106/graders/criterion-4.md",
+      "published_sha256": "0f4384d7902e801c93a18f57a6fb5cef66b2c19d207ce0ba55d59c9d68550e9b",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-106/graders/skill-fired.md",
+      "source_sha256": "ade80103447b09a46b45f1b958e70fd86fc0c07acffd3c4b0c50dc0b2a8f77af",
+      "published": "fixtures/case-106/graders/skill-fired.md",
+      "published_sha256": "ade80103447b09a46b45f1b958e70fd86fc0c07acffd3c4b0c50dc0b2a8f77af",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-106/prompt.md",
+      "source_sha256": "1d5c8941572dbb01fd77d56497ab8905e07b82a6fbfd8ab47498cdf1108513cb",
+      "published": "fixtures/case-106/prompt.md",
+      "published_sha256": "1d5c8941572dbb01fd77d56497ab8905e07b82a6fbfd8ab47498cdf1108513cb",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-107/case.yaml",
+      "source_sha256": "de53c5931e69b8cca706998cc7c36e5fbec456b2fe8f457487725b1b68ace338",
+      "published": "fixtures/case-107/case.yaml",
+      "published_sha256": "de53c5931e69b8cca706998cc7c36e5fbec456b2fe8f457487725b1b68ace338",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-107/fixture.sh",
+      "source_sha256": "19c9546b32731e6da8742249f03dd70bdeeac7a74cb56b519040d6f75f31a492",
+      "published": "fixtures/case-107/fixture.sh",
+      "published_sha256": "19c9546b32731e6da8742249f03dd70bdeeac7a74cb56b519040d6f75f31a492",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-107/graders/criterion-1.md",
+      "source_sha256": "80e98175d1ab811871b942d45ce2856ccba2e162790ba971622a2f6bba0d439a",
+      "published": "fixtures/case-107/graders/criterion-1.md",
+      "published_sha256": "80e98175d1ab811871b942d45ce2856ccba2e162790ba971622a2f6bba0d439a",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-107/graders/criterion-2.md",
+      "source_sha256": "563b8b9c3df884095e5c479d1c4111417ec5d6c7ad347c70f5c8f34b8e1eecd8",
+      "published": "fixtures/case-107/graders/criterion-2.md",
+      "published_sha256": "563b8b9c3df884095e5c479d1c4111417ec5d6c7ad347c70f5c8f34b8e1eecd8",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-107/graders/criterion-3.md",
+      "source_sha256": "a648c26a8589575ac01478f71d70d304fd142226300da8989bb950134e2ed8a7",
+      "published": "fixtures/case-107/graders/criterion-3.md",
+      "published_sha256": "a648c26a8589575ac01478f71d70d304fd142226300da8989bb950134e2ed8a7",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-107/graders/criterion-4.md",
+      "source_sha256": "0f4384d7902e801c93a18f57a6fb5cef66b2c19d207ce0ba55d59c9d68550e9b",
+      "published": "fixtures/case-107/graders/criterion-4.md",
+      "published_sha256": "0f4384d7902e801c93a18f57a6fb5cef66b2c19d207ce0ba55d59c9d68550e9b",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-107/graders/skill-fired.md",
+      "source_sha256": "ade80103447b09a46b45f1b958e70fd86fc0c07acffd3c4b0c50dc0b2a8f77af",
+      "published": "fixtures/case-107/graders/skill-fired.md",
+      "published_sha256": "ade80103447b09a46b45f1b958e70fd86fc0c07acffd3c4b0c50dc0b2a8f77af",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-107/prompt.md",
+      "source_sha256": "66462452f26fee1f47cc76b8f50533fd220f94f2e3dc4ffd863fde4ba2abe5dc",
+      "published": "fixtures/case-107/prompt.md",
+      "published_sha256": "66462452f26fee1f47cc76b8f50533fd220f94f2e3dc4ffd863fde4ba2abe5dc",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-108/case.yaml",
+      "source_sha256": "fa4ff5225443505fab293bae83b05838cf27c77eab38d6d7fb9ac53c800b97fe",
+      "published": "fixtures/case-108/case.yaml",
+      "published_sha256": "fa4ff5225443505fab293bae83b05838cf27c77eab38d6d7fb9ac53c800b97fe",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-108/fixture.sh",
+      "source_sha256": "7e83ba1ceac9049e85172885628334fdcc47b09c0c1e4af924ffa8283bd8b8e3",
+      "published": "fixtures/case-108/fixture.sh",
+      "published_sha256": "7e83ba1ceac9049e85172885628334fdcc47b09c0c1e4af924ffa8283bd8b8e3",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-108/graders/criterion-1.md",
+      "source_sha256": "5ce7e76237dadb65ac1f1d5ce5913284c3846f1f02b51fa86ddafd807694e9b7",
+      "published": "fixtures/case-108/graders/criterion-1.md",
+      "published_sha256": "5ce7e76237dadb65ac1f1d5ce5913284c3846f1f02b51fa86ddafd807694e9b7",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-108/graders/criterion-2.md",
+      "source_sha256": "8b79120f1628b740eb563e5d64de9a3afc49a7674dba29a0cd17b39451fa0d1b",
+      "published": "fixtures/case-108/graders/criterion-2.md",
+      "published_sha256": "8b79120f1628b740eb563e5d64de9a3afc49a7674dba29a0cd17b39451fa0d1b",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-108/graders/criterion-3.md",
+      "source_sha256": "a648c26a8589575ac01478f71d70d304fd142226300da8989bb950134e2ed8a7",
+      "published": "fixtures/case-108/graders/criterion-3.md",
+      "published_sha256": "a648c26a8589575ac01478f71d70d304fd142226300da8989bb950134e2ed8a7",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-108/graders/criterion-4.md",
+      "source_sha256": "0f4384d7902e801c93a18f57a6fb5cef66b2c19d207ce0ba55d59c9d68550e9b",
+      "published": "fixtures/case-108/graders/criterion-4.md",
+      "published_sha256": "0f4384d7902e801c93a18f57a6fb5cef66b2c19d207ce0ba55d59c9d68550e9b",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-108/graders/skill-fired.md",
+      "source_sha256": "ade80103447b09a46b45f1b958e70fd86fc0c07acffd3c4b0c50dc0b2a8f77af",
+      "published": "fixtures/case-108/graders/skill-fired.md",
+      "published_sha256": "ade80103447b09a46b45f1b958e70fd86fc0c07acffd3c4b0c50dc0b2a8f77af",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixtures/case-108/prompt.md",
+      "source_sha256": "66462452f26fee1f47cc76b8f50533fd220f94f2e3dc4ffd863fde4ba2abe5dc",
+      "published": "fixtures/case-108/prompt.md",
+      "published_sha256": "66462452f26fee1f47cc76b8f50533fd220f94f2e3dc4ffd863fde4ba2abe5dc",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "native-fixtures.patch",
+      "source_sha256": "59e8340ece938051354447ce74716e0c810ad07d9cb9afaecf98a4c9aea68735",
+      "published": "native-fixtures.patch",
+      "published_sha256": "59e8340ece938051354447ce74716e0c810ad07d9cb9afaecf98a4c9aea68735",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "fixture-checks.json",
+      "source_sha256": "be9933e44cc89079ca7ab3ec8c3874212926f1d06300ec3e9da21ae4e36b2ff0",
+      "published": "fixture-checks.json",
+      "published_sha256": "be9933e44cc89079ca7ab3ec8c3874212926f1d06300ec3e9da21ae4e36b2ff0",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "edge-fixture-checks.json",
+      "source_sha256": "b0079e7da1203eb21605a20add1012c75937870d36ffbf87ff7675b0f278cf08",
+      "published": "edge-fixture-checks.json",
+      "published_sha256": "b0079e7da1203eb21605a20add1012c75937870d36ffbf87ff7675b0f278cf08",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "early-release-fix-check.json",
+      "source_sha256": "52c7d5caf514773ca7cde9d5ba23f0acdd04f84ed18867d927d67a0d88d43c82",
+      "published": "early-release-fix-check.json",
+      "published_sha256": "52c7d5caf514773ca7cde9d5ba23f0acdd04f84ed18867d927d67a0d88d43c82",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "source": "native/base/grading/code-review-and-quality.eval-101.grading.json",
+      "source_sha256": "5ccc6feea47604d5fa146abecf17ab4db3c69fbcca8c16f89e7521fb5189c8fb",
+      "published": "native/base/grading/code-review-and-quality.eval-101.grading.json",
+      "published_sha256": "5ccc6feea47604d5fa146abecf17ab4db3c69fbcca8c16f89e7521fb5189c8fb",
+      "transformation": "JSON formatting and local-path redaction only"
+    },
+    {
+      "source": "native/base/grading/code-review-and-quality.eval-102.grading.json",
+      "source_sha256": "7a32a808ed20b5f2b812b14a1d0d352ba5ceefbd87dc8f8d0e5de26522c9609b",
+      "published": "native/base/grading/code-review-and-quality.eval-102.grading.json",
+      "published_sha256": "7a32a808ed20b5f2b812b14a1d0d352ba5ceefbd87dc8f8d0e5de26522c9609b",
+      "transformation": "JSON formatting and local-path redaction only"
+    },
+    {
+      "source": "native/base/grading/code-review-and-quality.eval-103.grading.json",
+      "source_sha256": "3d69e16e70fc6335d210aa83ab05234d036f81790c108fc4f09cde8d37660ee0",
+      "published": "native/base/grading/code-review-and-quality.eval-103.grading.json",
+      "published_sha256": "3d69e16e70fc6335d210aa83ab05234d036f81790c108fc4f09cde8d37660ee0",
+      "transformation": "JSON formatting and local-path redaction only"
+    },
+    {
+      "source": "native/base/grading/code-review-and-quality.eval-104.grading.json",
+      "source_sha256": "7a4222e081f35c5a659436ba98a373780a437fd049918257a8bd269433115e0a",
+      "published": "native/base/grading/code-review-and-quality.eval-104.grading.json",
+      "published_sha256": "7a4222e081f35c5a659436ba98a373780a437fd049918257a8bd269433115e0a",
+      "transformation": "JSON formatting and local-path redaction only"
+    },
+    {
+      "source": "native/base/grading/code-review-and-quality.eval-105.grading.json",
+      "source_sha256": "32765cd03677bcdffb47170e205c7ddff17924ef6aa0ffd5a9d819aeee5df144",
+      "published": "native/base/grading/code-review-and-quality.eval-105.grading.json",
+      "published_sha256": "32765cd03677bcdffb47170e205c7ddff17924ef6aa0ffd5a9d819aeee5df144",
+      "transformation": "JSON formatting and local-path redaction only"
+    },
+    {
+      "source": "native/base/grading/code-review-and-quality.eval-106.grading.json",
+      "source_sha256": "701ccf71f9ee8037111dc1a17b37ccea03f61b2fc592251ce68f1dd13d087c88",
+      "published": "native/base/grading/code-review-and-quality.eval-106.grading.json",
+      "published_sha256": "701ccf71f9ee8037111dc1a17b37ccea03f61b2fc592251ce68f1dd13d087c88",
+      "transformation": "JSON formatting and local-path redaction only"
+    },
+    {
+      "source": "native/head/grading/code-review-and-quality.eval-101.grading.json",
+      "source_sha256": "793e3914eb6e46c708420f4b95d0415f147937601c80a7ec04dea8bc7a1345cd",
+      "published": "native/head/grading/code-review-and-quality.eval-101.grading.json",
+      "published_sha256": "793e3914eb6e46c708420f4b95d0415f147937601c80a7ec04dea8bc7a1345cd",
+      "transformation": "JSON formatting and local-path redaction only"
+    },
+    {
+      "source": "native/head/grading/code-review-and-quality.eval-102.grading.json",
+      "source_sha256": "2932e21913037f575110441e6830aca84a829aaab445cc209be60462c8af8eba",
+      "published": "native/head/grading/code-review-and-quality.eval-102.grading.json",
+      "published_sha256": "2932e21913037f575110441e6830aca84a829aaab445cc209be60462c8af8eba",
+      "transformation": "JSON formatting and local-path redaction only"
+    },
+    {
+      "source": "native/head/grading/code-review-and-quality.eval-103.grading.json",
+      "source_sha256": "9ea9501fcd6120a6b6f3398694eab9996aa7e332cbffa1fb1e81586eb794b793",
+      "published": "native/head/grading/code-review-and-quality.eval-103.grading.json",
+      "published_sha256": "9ea9501fcd6120a6b6f3398694eab9996aa7e332cbffa1fb1e81586eb794b793",
+      "transformation": "JSON formatting and local-path redaction only"
+    },
+    {
+      "source": "native/head/grading/code-review-and-quality.eval-104.grading.json",
+      "source_sha256": "5fdf3c2703c14851c75c4bb1fd6270e6d72cf53abad7b88a53355be6ad29f617",
+      "published": "native/head/grading/code-review-and-quality.eval-104.grading.json",
+      "published_sha256": "5fdf3c2703c14851c75c4bb1fd6270e6d72cf53abad7b88a53355be6ad29f617",
+      "transformation": "JSON formatting and local-path redaction only"
+    },
+    {
+      "source": "native/head/grading/code-review-and-quality.eval-105.grading.json",
+      "source_sha256": "a96d0ae6ef1128c5914a1748edd91f37e1192da6cdff108dde07909ed70ac1a9",
+      "published": "native/head/grading/code-review-and-quality.eval-105.grading.json",
+      "published_sha256": "a96d0ae6ef1128c5914a1748edd91f37e1192da6cdff108dde07909ed70ac1a9",
+      "transformation": "JSON formatting and local-path redaction only"
+    },
+    {
+      "source": "native/head/grading/code-review-and-quality.eval-106.grading.json",
+      "source_sha256": "e8105f26097576d417e1ce35fcc6cdf8dcbdf3e47372017dcf6a2627c2668449",
+      "published": "native/head/grading/code-review-and-quality.eval-106.grading.json",
+      "published_sha256": "e8105f26097576d417e1ce35fcc6cdf8dcbdf3e47372017dcf6a2627c2668449",
+      "transformation": "JSON formatting and local-path redaction only"
+    },
+    {
+      "source": "native/record-regrade/grading/code-review-and-quality.eval-103.962f6b70-8b4b-4d8d-af3f-067a5b4780f4.record.json",
+      "source_sha256": "cd6708fa62ac63fe3318edce841617d59236a2c65188e0ddde8c0814f68b3f56",
+      "published": "native/record-regrade/grading/code-review-and-quality.eval-103.962f6b70-8b4b-4d8d-af3f-067a5b4780f4.record.json",
+      "published_sha256": "e89946643e9780f8764759d2edaa166082a5f754f0f4cefb66dd6d25d2418190",
+      "transformation": "JSON formatting and local-path redaction only"
+    },
+    {
+      "source": "native/record-regrade/grading/code-review-and-quality.eval-103.962f6b70-8b4b-4d8d-af3f-067a5b4780f4.record.json.attempt-4aa0bb71-b4bf-4d10-b8e6-3784f2b4ba05.json",
+      "source_sha256": "05f093aa072608673f68a977cd1c24f8f22c6077805d70621ee0ed6651504d3c",
+      "published": "native/record-regrade/grading/code-review-and-quality.eval-103.962f6b70-8b4b-4d8d-af3f-067a5b4780f4.record.json.attempt-4aa0bb71-b4bf-4d10-b8e6-3784f2b4ba05.json",
+      "published_sha256": "05f093aa072608673f68a977cd1c24f8f22c6077805d70621ee0ed6651504d3c",
+      "transformation": "JSON formatting and local-path redaction only"
+    },
+    {
+      "source": "native/record-regrade/grading/code-review-and-quality.eval-103.962f6b70-8b4b-4d8d-af3f-067a5b4780f4.record.json.attempt-e7a006a9-0c5e-4183-8deb-111061750e4b.json",
+      "source_sha256": "d89fa9fddd48960eb4d651c466cfad105261a678dba67e8174404202d1fb440f",
+      "published": "native/record-regrade/grading/code-review-and-quality.eval-103.962f6b70-8b4b-4d8d-af3f-067a5b4780f4.record.json.attempt-e7a006a9-0c5e-4183-8deb-111061750e4b.json",
+      "published_sha256": "d89fa9fddd48960eb4d651c466cfad105261a678dba67e8174404202d1fb440f",
+      "transformation": "JSON formatting and local-path redaction only"
+    },
+    {
+      "source": "native/record-regrade/grading/code-review-and-quality.eval-103.grading.json",
+      "source_sha256": "f3e78c8a6d8fe52e57abb2b21bd36e06e00833c4920298549f9ee030e703d671",
+      "published": "native/record-regrade/grading/code-review-and-quality.eval-103.grading.json",
+      "published_sha256": "f3e78c8a6d8fe52e57abb2b21bd36e06e00833c4920298549f9ee030e703d671",
+      "transformation": "JSON formatting and local-path redaction only"
+    },
+    {
+      "source": "plugin-confirmation/retained-traces/case-101-with-1.jsonl",
+      "source_sha256": "7e0762e85713676a0cc216a18e76502671cf0e6712bbeb9cc95d093a50c48680",
+      "published": "plugin-confirmation/traces/case-101-with-1.jsonl",
+      "published_sha256": "fcb2a7d82e948d6913ccdcbd69ad60e494ed4aa4043eaeac8e8a6155f846db62",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-confirmation/retained-traces/case-101-with-2.jsonl",
+      "source_sha256": "eced57aa0ff8439de6d7c91d49c6df21d5ecbc0577de73d37267f6797dc36833",
+      "published": "plugin-confirmation/traces/case-101-with-2.jsonl",
+      "published_sha256": "b701c8d280c144b0e243a4bbc011b2efbdb7a6a95ae4af216612db2d67094abd",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-confirmation/retained-traces/case-101-with-3.jsonl",
+      "source_sha256": "c40b576d924f26e24c7eed2a7a5d30812252b613f2844979475255349be59bc3",
+      "published": "plugin-confirmation/traces/case-101-with-3.jsonl",
+      "published_sha256": "c8f9703162a426b718f6581517236d5df324998f5edf3e86eb1a4e22dbccf8e4",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-confirmation/retained-traces/case-101-without-1.jsonl",
+      "source_sha256": "c3153d3472d379877fdb4a742b8e2d231c3483ee8d785abcf4e1ba1d5e22d619",
+      "published": "plugin-confirmation/traces/case-101-without-1.jsonl",
+      "published_sha256": "ee53ca838b0876c8e3a3da43a62e58f788795b61c008ecb69d2cdd75a2643e93",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-confirmation/retained-traces/case-101-without-2.jsonl",
+      "source_sha256": "3b2db0bca08803ef35274583dd719104228183ded799155ba685ae4512071dfe",
+      "published": "plugin-confirmation/traces/case-101-without-2.jsonl",
+      "published_sha256": "a2d84408086e3ab40c3dde3393c9ab12148cdc8bc97fc9b60d7300ebd50447c4",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-confirmation/retained-traces/case-101-without-3.jsonl",
+      "source_sha256": "3a6e5e351b3350a1d69b7000718dfd6fea2c514e028c89fc62ccaae7db91b2f2",
+      "published": "plugin-confirmation/traces/case-101-without-3.jsonl",
+      "published_sha256": "b74bc03618a84d28217c87e7aeb387b32413560562c5787dc03b7c0df9b492e0",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-confirmation/retained-traces/case-102-with-1.jsonl",
+      "source_sha256": "f4377c44850c087e0fd7b15d491100dd6a710061d5befe15d2b7209c9e0bfafc",
+      "published": "plugin-confirmation/traces/case-102-with-1.jsonl",
+      "published_sha256": "68230d1681003c2051a5235337334790a0ffae0d10f17a2455a02cae18eb5756",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-confirmation/retained-traces/case-102-with-2.jsonl",
+      "source_sha256": "17c929266a5e2cce2405838bd61b68d15b3775adc6c3fbb37b00aea2d5874493",
+      "published": "plugin-confirmation/traces/case-102-with-2.jsonl",
+      "published_sha256": "f0575a7c483e6304c583cb06128e816acac2e0cace0c8124cbc2895f98ca1985",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-confirmation/retained-traces/case-102-with-3.jsonl",
+      "source_sha256": "8e49cff64843ebe3d8e8a2c3e70b6ca70fcdd079e34d38c6b2c818e5f8726460",
+      "published": "plugin-confirmation/traces/case-102-with-3.jsonl",
+      "published_sha256": "b63cfd496aaa085e34300d0d98a6d1d70c579ab719fe3466fbb6c95572ccb6b9",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-confirmation/retained-traces/case-102-without-1.jsonl",
+      "source_sha256": "d72758bdcf9f730d675c8f253faeab513b618b810483a8c0ebc83451c30b96e5",
+      "published": "plugin-confirmation/traces/case-102-without-1.jsonl",
+      "published_sha256": "3a195ca848d590a10df4093cf39d5c147c41ecd9c9703a51c36a852a30836595",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-confirmation/retained-traces/case-102-without-2.jsonl",
+      "source_sha256": "cc3edfa0d7625fded9ba7fbfbff8ca45ee4024bd90043b605ee4d6a093deff3f",
+      "published": "plugin-confirmation/traces/case-102-without-2.jsonl",
+      "published_sha256": "eb2d85a08d8bdae34c681f168d8a81479c05d47e017e5ef1d47ad2f1dfc090bf",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-confirmation/retained-traces/case-102-without-3.jsonl",
+      "source_sha256": "44263f903e365d4786209ed65e97bca93b7e9818f89f1fa781a15c14fc6a52d9",
+      "published": "plugin-confirmation/traces/case-102-without-3.jsonl",
+      "published_sha256": "44c397c34102826099910c4da49f16bc7a5d8c066c7217c0a08ac04531fd2963",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-confirmation/retained-traces/case-103-with-1.jsonl",
+      "source_sha256": "f83f1a74685d2c234632b4c0fc9a800e96e970a88545cace3696a4baf5a56465",
+      "published": "plugin-confirmation/traces/case-103-with-1.jsonl",
+      "published_sha256": "797218f65ce7d3fdb57172a2e9126b22b81dc7527023f48566417a5f54fab5c9",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-confirmation/retained-traces/case-103-with-2.jsonl",
+      "source_sha256": "5809dce664702ddc7d9023bb4a3968715c74b5013a59cf61dde6475fd5074421",
+      "published": "plugin-confirmation/traces/case-103-with-2.jsonl",
+      "published_sha256": "5af61dc13be6b7f851237ca143a3450878661eb8a46cd69fca138cae92d8be6e",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-confirmation/retained-traces/case-103-with-3.jsonl",
+      "source_sha256": "03c0c59436641a7e0f133bb20f3c1ea89df8742d6bdef48ecbaa53b8e7d92ffb",
+      "published": "plugin-confirmation/traces/case-103-with-3.jsonl",
+      "published_sha256": "3b5a73a26b2494b3a16da4c4150c239cc576a38f40451e0711b73624114010b0",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-confirmation/retained-traces/case-103-without-1.jsonl",
+      "source_sha256": "481e75dc4b573241ed05b3fef022280c96d05fb527ac256f335aee9bdb2ab740",
+      "published": "plugin-confirmation/traces/case-103-without-1.jsonl",
+      "published_sha256": "442ec6aebf10f352c61d83f373fbc32e0d4187d3faa4d04165741c759593a010",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-confirmation/retained-traces/case-103-without-2.jsonl",
+      "source_sha256": "10442110798a98120aeed8f48e19d73872939229eb7666f113b2f8a9d2e74cb3",
+      "published": "plugin-confirmation/traces/case-103-without-2.jsonl",
+      "published_sha256": "4377a33589c9a66f2a9ae09a617b75f9ab3fbd655f76bf67d0c4c7ae0b0068b2",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-confirmation/retained-traces/case-103-without-3.jsonl",
+      "source_sha256": "b32eee8cddcd8445e90caa8a52925240b9b85ffcc3f97801613b111284190d91",
+      "published": "plugin-confirmation/traces/case-103-without-3.jsonl",
+      "published_sha256": "1073cd66438fda19350d0089157fdbe46f4423b27c86a15acb2e0a9b6a2f5837",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-confirmation/retained-traces/case-104-with-1.jsonl",
+      "source_sha256": "616176823f1195a88c65aca70c9a8e30f863ef779bb51459a8cbd804ef124108",
+      "published": "plugin-confirmation/traces/case-104-with-1.jsonl",
+      "published_sha256": "fa62c9371f6f3fc543ef2e99b654666e44da1b4431380661b52d6bcdb3f3a725",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-confirmation/retained-traces/case-104-with-2.jsonl",
+      "source_sha256": "a0e6761947a1ed044acb9909531239119f273a3f5c99b42bd34a030384509e0a",
+      "published": "plugin-confirmation/traces/case-104-with-2.jsonl",
+      "published_sha256": "2dedeb5ea3ce38fc52b732b7e5742539c8ab2c5d8ec34a87c5ea5f5932848a8b",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-confirmation/retained-traces/case-104-with-3.jsonl",
+      "source_sha256": "be4c894c488e368c995ddb893256a6ace25efcbf3118f59fa84720554aef46bd",
+      "published": "plugin-confirmation/traces/case-104-with-3.jsonl",
+      "published_sha256": "93d16ef1b83a096f563454732524e246d70dc3161859753ea3b456f6669ca5e5",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-confirmation/retained-traces/case-104-without-1.jsonl",
+      "source_sha256": "f7b91f2d19201ea5735091df80b54131a11f5cfd73bfd74502f645fdbf3b8397",
+      "published": "plugin-confirmation/traces/case-104-without-1.jsonl",
+      "published_sha256": "8b2132110c624c9b590744a7c2c9659a796d910865f5791d7c6e22239c0d8666",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-confirmation/retained-traces/case-104-without-2.jsonl",
+      "source_sha256": "fa2ec08bfe03da37b2f2538c030459f39491d55cb8453bbed0f74ee1c96ad33f",
+      "published": "plugin-confirmation/traces/case-104-without-2.jsonl",
+      "published_sha256": "4db055766d50561d677afd6d4bd3ae64c27941b22ef5663ce92dbae45c96ae37",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-confirmation/retained-traces/case-104-without-3.jsonl",
+      "source_sha256": "f46762d9f04767a308dbc92a21eb3a18ac7a92046e1452c2b2a262f953460265",
+      "published": "plugin-confirmation/traces/case-104-without-3.jsonl",
+      "published_sha256": "588a127fc561838a71ef7390b9f0cd55f1ad1c221999af9fd870d930bfd8a117",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-confirmation/retained-traces/case-105-with-1.jsonl",
+      "source_sha256": "6fce9e757d78de13952e13700e361e17f0ea2f69e7e1e320bd58403f4a071319",
+      "published": "plugin-confirmation/traces/case-105-with-1.jsonl",
+      "published_sha256": "b7aefee467ca88eb7219d650aede2cf6ebe2af812f3e623d747d2a648029d355",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-confirmation/retained-traces/case-105-with-2.jsonl",
+      "source_sha256": "012914a4dc9cb76fe7e6c797230f7fbabcf3bdfa629881f17f6c687e14a71795",
+      "published": "plugin-confirmation/traces/case-105-with-2.jsonl",
+      "published_sha256": "8c1f7dbfdcce1b6b34feda4cd2146dc13d26c66f823debe5f4a69af6ab3c616d",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-confirmation/retained-traces/case-105-with-3.jsonl",
+      "source_sha256": "96f5c86283447bcb17e7b73d3c82a1ccc502c35732ec8c3ed5f97a16b0abc411",
+      "published": "plugin-confirmation/traces/case-105-with-3.jsonl",
+      "published_sha256": "d478f6d96079fefee1987b29fccd0d3f61cc746e0f09326b88e6ed83221e1f30",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-confirmation/retained-traces/case-105-without-1.jsonl",
+      "source_sha256": "a40b4ad4498666e6219ac3b69002cbbbfcd6e86eaa73c853957f4d8dd97a98d3",
+      "published": "plugin-confirmation/traces/case-105-without-1.jsonl",
+      "published_sha256": "a2073877befaa45993d98acbb2da2227100e494e05585ca45c1a657cae44b870",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-confirmation/retained-traces/case-105-without-2.jsonl",
+      "source_sha256": "dfd1fb6141d6cc854847a69f62a33796150c4318567e227e407007f0435b4604",
+      "published": "plugin-confirmation/traces/case-105-without-2.jsonl",
+      "published_sha256": "44ced42452677f204ec9fd3282eef61362cbf49b438364fa7c1caacce0c891d4",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-confirmation/retained-traces/case-105-without-3.jsonl",
+      "source_sha256": "bd16bfabae3899f770514cb5ee04a6506e764be3dc40111460d89f4f252d9ca7",
+      "published": "plugin-confirmation/traces/case-105-without-3.jsonl",
+      "published_sha256": "03355b9a3ac82e3cf8fc7d81384658a0a16f722e3d8e88d0d503d54a0aa704cb",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-confirmation/retained-traces/case-106-with-1.jsonl",
+      "source_sha256": "6075da055afa91e079f628b380645a83602aecc3edcc9955bd256c914510ffdf",
+      "published": "plugin-confirmation/traces/case-106-with-1.jsonl",
+      "published_sha256": "7f91d3d4702a673680b34c7396e8fc5300affdc019cff25fc285aed68b9e4793",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-confirmation/retained-traces/case-106-with-2.jsonl",
+      "source_sha256": "6c6ca24562262b2a23d6a5c3c42c6be2081f31fa04aa562d714cccde8adbbcae",
+      "published": "plugin-confirmation/traces/case-106-with-2.jsonl",
+      "published_sha256": "ce5da79976a19caaf6b25788e08c032013acb4fe7139fbf35a91a0ee287bb46c",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-confirmation/retained-traces/case-106-with-3.jsonl",
+      "source_sha256": "33a7f72d254528a20e0a22638921d3d53d0f5e271d4f047553b3d2baa605ea62",
+      "published": "plugin-confirmation/traces/case-106-with-3.jsonl",
+      "published_sha256": "6cf63ef7d444cc0d5eca4893f2a357da01ebd0e51bd8c5a3924b8dba1163a4f8",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-confirmation/retained-traces/case-106-without-1.jsonl",
+      "source_sha256": "0344e2a51b46bf2bf17d4c8f2088d2f66d0dfeee58f18aed1191ae86103f5a7b",
+      "published": "plugin-confirmation/traces/case-106-without-1.jsonl",
+      "published_sha256": "e6516c82d7f4fd9d1e3d7644f709edebcac7fc9ea0285fb1a51a35db8060aa16",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-confirmation/retained-traces/case-106-without-2.jsonl",
+      "source_sha256": "713985e403346c42ea2740b0bab225bf3520c8b89c2544b5e7f720acf2c5099b",
+      "published": "plugin-confirmation/traces/case-106-without-2.jsonl",
+      "published_sha256": "dba4bd5f223c5c0e0dcc1fdcd0774e419270ed8aea53f5d25861d38fca194700",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-confirmation/retained-traces/case-106-without-3.jsonl",
+      "source_sha256": "93cb8260a0d9a42e82ea53f3e1a688f8786411a57a1a21813292c7811847955c",
+      "published": "plugin-confirmation/traces/case-106-without-3.jsonl",
+      "published_sha256": "ceec9b6e46200d4ce6aa9f5421df9b2fa5bbbee9c26fc35ce30eabd55744b2d9",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-confirmation/results.json",
+      "source_sha256": "802889a400f65c2e09d08c58d9f967b36a4aeb7bd7e2e52b96b3f63517dc54ed",
+      "published": "plugin-confirmation/runs.json",
+      "published_sha256": "dd6e2501b49d0be17c6abb4536d169d3db60bd299959257ec1f49a6293e94e66",
+      "transformation": "Native results projection: preserves all cases, scores, votes, costs and grader definitions; embedded evidence replaced by digest and projected trace link; local paths redacted"
+    },
+    {
+      "source": "plugin-confirmation/driftproof/agent-skills-claude-opus-5-5-imported-claude-plugin-eval-2026-10-10-802889a400f6.json",
+      "source_sha256": "03aca0d643ad06a4f8e616aae2f28f1201c95968b5bfeebb8f3619ebca78855d",
+      "published": "plugin-confirmation/driftproof/agent-skills-claude-opus-5-5-imported-claude-plugin-eval-2026-10-10-802889a400f6.json",
+      "published_sha256": "03aca0d643ad06a4f8e616aae2f28f1201c95968b5bfeebb8f3619ebca78855d",
+      "transformation": "byte-for-byte copy of existing imported receipt"
+    },
+    {
+      "source": "plugin-edge/retained-traces/case-107-with-1.jsonl",
+      "source_sha256": "84165a894838adb1a58008f289b553ea866e0e2109f18121d0450d9792e35a77",
+      "published": "plugin-edge/traces/case-107-with-1.jsonl",
+      "published_sha256": "0ecc0e3beb0a28179147148634de6002cefb4a39a0d14a0ef8b97f4bfacbcd17",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-edge/retained-traces/case-107-with-2.jsonl",
+      "source_sha256": "3febdb3423b1c2954c1a0afaa7130f1626242cc41f11c8323dc5fa2445b8d139",
+      "published": "plugin-edge/traces/case-107-with-2.jsonl",
+      "published_sha256": "2f4d4423391469c8be9e181acfd2629c7b75a3004b58b9b2515bcafd1f6a0398",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-edge/retained-traces/case-107-with-3.jsonl",
+      "source_sha256": "b89b9a8715f45595cf578ed5ae3782f522a153dc199e0494024a2e88b027d038",
+      "published": "plugin-edge/traces/case-107-with-3.jsonl",
+      "published_sha256": "ef7b92df86ef4b6a56073766aad8cc17fe6e9134520b3cbe1b5af9c54af167df",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-edge/retained-traces/case-107-without-1.jsonl",
+      "source_sha256": "51cce416b2dfdcb70facda7e92f399967fc587ca383f5e3245357cc5e910fabf",
+      "published": "plugin-edge/traces/case-107-without-1.jsonl",
+      "published_sha256": "0be1121a784b2488788a6355fe65d671e2e4e88b4ef3ab49bcbf00855d37eede",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-edge/retained-traces/case-107-without-2.jsonl",
+      "source_sha256": "0a67d00cd71bb649adcb2d4d47dfbcc9c5ba6226d8f3eb26c689119dda4501ee",
+      "published": "plugin-edge/traces/case-107-without-2.jsonl",
+      "published_sha256": "b52cc9d36d4e2e91725550251716f07f4ab3edeb859d48b3dcbe24e694be03f2",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-edge/retained-traces/case-107-without-3.jsonl",
+      "source_sha256": "94727de9dfd4a8b2e3346ea4b848597b9040f95fede65055e952622d2218d808",
+      "published": "plugin-edge/traces/case-107-without-3.jsonl",
+      "published_sha256": "5fccdefe2330d54a94c34d78247668aca2cee63431ef3f0cad666beedcc0cff7",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-edge/retained-traces/case-108-with-1.jsonl",
+      "source_sha256": "678c238d0fb57d03c26ccf005baa5509ce056c63336da081e62c3c06cf355a1c",
+      "published": "plugin-edge/traces/case-108-with-1.jsonl",
+      "published_sha256": "6721277ab0fc046307346e7ac242e61e2d1c8ec7daf49b5f577bbdd7efeb186b",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-edge/retained-traces/case-108-with-2.jsonl",
+      "source_sha256": "6ccff7539067e07f63746ed95a56f23d4fda7c9d530995151c2e44ff299086f5",
+      "published": "plugin-edge/traces/case-108-with-2.jsonl",
+      "published_sha256": "1a94eb61cc7a0a6005bb4d171b0701670c6b1123d6e6b2680cae65c5d51fab3d",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-edge/retained-traces/case-108-with-3.jsonl",
+      "source_sha256": "c068704ca04ea8561a60806819474dd6a5ad14a8e78e97377ea80ce7cc10b64a",
+      "published": "plugin-edge/traces/case-108-with-3.jsonl",
+      "published_sha256": "4cc84e99e95e8928440bca7a47d70771955413a46fa1e255324a00cdf6c4ff15",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-edge/retained-traces/case-108-without-1.jsonl",
+      "source_sha256": "090255dda1b55cb7caa98347086480885f090e626f6072a4445ad394edfe6cc7",
+      "published": "plugin-edge/traces/case-108-without-1.jsonl",
+      "published_sha256": "52a9227b0d29592267cc96337f8898cdbe570f78129afffc1527b4aba9b100c9",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-edge/retained-traces/case-108-without-2.jsonl",
+      "source_sha256": "eecf49d58c1d2f478c9ae1cebe8bb5f22bb0afe0775122bcbee26ae978cf9d8b",
+      "published": "plugin-edge/traces/case-108-without-2.jsonl",
+      "published_sha256": "303c028093907733567bddde386c73708fe478801c6e7babf8939cb19ac95d69",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-edge/retained-traces/case-108-without-3.jsonl",
+      "source_sha256": "b08fb1280139cd165d18a4a69a87100c95a1b35df6960dd43f6992bae26c33fe",
+      "published": "plugin-edge/traces/case-108-without-3.jsonl",
+      "published_sha256": "efecaa064cb88ae8a99f8d3f35989a439d708541dcc6a625dfe808776ef0acf8",
+      "transformation": "Text/tool/result projection; system events, reasoning blocks, session/request metadata removed; local paths redacted"
+    },
+    {
+      "source": "plugin-edge/results.json",
+      "source_sha256": "645578b522b61eaccdcd18888e4d3570f5e985aea7d5f8d8208e63331ffd094b",
+      "published": "plugin-edge/runs.json",
+      "published_sha256": "53ba47659c971cc533e404d904b813804eaee7f3a79099a1c8aec704b7641e19",
+      "transformation": "Native results projection: preserves all cases, scores, votes, costs and grader definitions; embedded evidence replaced by digest and projected trace link; local paths redacted"
+    },
+    {
+      "source": "plugin-edge/driftproof/agent-skills-claude-opus-5-5-imported-claude-plugin-eval-2026-10-10-645578b522b6.json",
+      "source_sha256": "e185ffb5c301f4c76475c0096c21dc094905c92556f8156fdde841870d8d8451",
+      "published": "plugin-edge/driftproof/agent-skills-claude-opus-5-5-imported-claude-plugin-eval-2026-10-10-645578b522b6.json",
+      "published_sha256": "e185ffb5c301f4c76475c0096c21dc094905c92556f8156fdde841870d8d8451",
+      "transformation": "byte-for-byte copy of existing imported receipt"
+    }
+  ]
+}

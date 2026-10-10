@@ -1,0 +1,39 @@
+{
+  "expectations": [
+    {
+      "id": 1,
+      "text": "Recognizes that the verified mutex across both awaits and exclusive store access prevent the race; single-threaded JavaScript alone is not the reason.",
+      "passed": true,
+      "evidence": "The assistant states: 'the enforced mutex runs every call one at a time across both awaits, and nothing else writes the store. The protection comes from that lock, not from the function.' This explicitly credits the mutex (not single-threaded JS) for preventing the race."
+    },
+    {
+      "id": 2,
+      "text": "Does not require fixing this prevented race before merge. Future concurrency concerns, if raised, are conditional and nonblocking.",
+      "passed": true,
+      "evidence": "The race discussion is labeled 'Main finding (FYI)' — informational, not a blocker. The verdict is 'Approve' conditional only on the separate verification question about row/field existence, not on fixing the race."
+    },
+    {
+      "id": 3,
+      "text": "For EVERY mandatory failure finding, including the main finding, either ground its trigger and relevant API/caller behavior in supplied facts, or explicitly request verification. A conditional concern is allowed; inventing reachability or claiming a missing-context defect is confirmed fails. Structural/readability requests are outside this criterion. Judge this separately from verdict consistency.",
+      "passed": true,
+      "evidence": "The main finding is FYI (not mandatory). The only potential blocker (missing row / missing numeric `available`) is framed as a verification question: 'Does every SKU always have a row with a numeric available?' with conditional language 'If neither case can be ruled out, change line 3…' — explicitly requesting verification rather than asserting a confirmed defect."
+    },
+    {
+      "id": 4,
+      "text": "The final merge recommendation agrees with the stated requirements. A conditional approval pending a named check is consistent. Request changes with an unsupported blocker can satisfy this consistency criterion: penalize the unsupported blocker only under grounding. Optional nits with approval are consistent.",
+      "passed": true,
+      "evidence": "Verdict is 'Approve, once one question is answered.' The named check (whether every SKU always has a row with numeric `available`) is clearly stated, making this a conditional approval — internally consistent."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1
+  },
+  "run": {
+    "executor_model": "claude-opus-5-5",
+    "grader_model": "unknown",
+    "timestamp": "2026-10-10T18:34:54.303Z"
+  }
+}

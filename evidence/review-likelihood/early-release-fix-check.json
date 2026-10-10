@@ -1,0 +1,19 @@
+{
+  "case": "case-107",
+  "change": "return reserve(db, sku) -> return await reserve(db, sku) inside try/finally",
+  "before": {
+    "accepted": [
+      true,
+      true
+    ],
+    "remaining": 0
+  },
+  "after": {
+    "accepted": [
+      true,
+      false
+    ],
+    "remaining": 0
+  },
+  "scope": "Executable synthetic one-worker fixture; no upstream skill or application changed"
+}

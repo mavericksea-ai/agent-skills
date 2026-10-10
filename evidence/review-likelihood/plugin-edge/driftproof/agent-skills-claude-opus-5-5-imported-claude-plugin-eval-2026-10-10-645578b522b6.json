@@ -1,0 +1,196 @@
+{
+  "schema_version": "0.11",
+  "skill": {
+    "name": "agent-skills",
+    "version": "0.6.12",
+    "content_hash": null,
+    "unit": "plugin"
+  },
+  "suite": {
+    "format": "claude-plugin-eval/aggregate-result.json",
+    "suite_hash": null,
+    "case_count": 2
+  },
+  "run": {
+    "model_id": "claude-opus-5-5",
+    "model_release_date": null,
+    "provider": "anthropic",
+    "surface": "external",
+    "source": "imported/claude-plugin-eval",
+    "runner_version": "0.19.0",
+    "date_utc": "2026-10-10T18:39:55.797Z",
+    "registry": "registered",
+    "transcripts": "none",
+    "judge": {
+      "temperature": null,
+      "sampling": "external",
+      "surface": "external",
+      "model_id": "claude-opus-4-6",
+      "prompt_template_hash": null
+    },
+    "answered_by": {
+      "kind": "external",
+      "attested": false,
+      "reported_model": null,
+      "reported_models": null,
+      "isolation": "none"
+    },
+    "harness": {
+      "name": "claude-code",
+      "version": "2.1.296"
+    },
+    "import": {
+      "tool": "claude-plugin-eval",
+      "format": "aggregate-result.json",
+      "format_version": 1,
+      "source_sha256": "645578b522b61eaccdcd18888e4d3570f5e985aea7d5f8d8208e63331ffd094b",
+      "imported_at": "2026-10-10T18:44:36.364Z"
+    },
+    "counts": {
+      "generations_per_arm": 3
+    }
+  },
+  "results": {
+    "cases": [
+      {
+        "id": "case-107",
+        "mode": "with_skill",
+        "outcome": "borderline",
+        "score": 1,
+        "mean": 1,
+        "stddev": 0,
+        "samples": [
+          1,
+          1,
+          1
+        ],
+        "threshold": 1,
+        "judge": {
+          "model_id": "claude-opus-4-6",
+          "rubric_hash": null
+        },
+        "activation": [
+          {
+            "indicator": "skill-fired",
+            "fired": 3,
+            "runs": 3
+          }
+        ]
+      },
+      {
+        "id": "case-107",
+        "mode": "baseline",
+        "outcome": "borderline",
+        "score": 1,
+        "mean": 1,
+        "stddev": 0,
+        "samples": [
+          1,
+          1,
+          1
+        ],
+        "threshold": 1,
+        "judge": {
+          "model_id": "claude-opus-4-6",
+          "rubric_hash": null
+        }
+      },
+      {
+        "id": "case-108",
+        "mode": "with_skill",
+        "outcome": "borderline",
+        "score": 1,
+        "mean": 1,
+        "stddev": 0,
+        "samples": [
+          1,
+          1,
+          1
+        ],
+        "threshold": 1,
+        "judge": {
+          "model_id": "claude-opus-4-6",
+          "rubric_hash": null
+        },
+        "activation": [
+          {
+            "indicator": "skill-fired",
+            "fired": 3,
+            "runs": 3
+          }
+        ]
+      },
+      {
+        "id": "case-108",
+        "mode": "baseline",
+        "outcome": "borderline",
+        "score": 1,
+        "mean": 1,
+        "stddev": 0,
+        "samples": [
+          1,
+          1,
+          1
+        ],
+        "threshold": 1,
+        "judge": {
+          "model_id": "claude-opus-4-6",
+          "rubric_hash": null
+        }
+      }
+    ],
+    "aggregates": {
+      "with_skill": {
+        "case_count": 2,
+        "pass_count": 0,
+        "borderline_count": 2,
+        "mean_score": 1,
+        "stddev": 0
+      },
+      "baseline": {
+        "case_count": 2,
+        "pass_count": 0,
+        "borderline_count": 2,
+        "mean_score": 1,
+        "stddev": 0
+      },
+      "band_rule": "per arm: the sample standard deviation (n-1) of the per-case means across the included cases; the comparison band is the quadrature sum of the two arms; null where an arm has fewer than two included cases"
+    }
+  },
+  "comparison": {
+    "with_skill_score": 1,
+    "baseline_score": 1,
+    "delta": 0,
+    "delta_uncertainty": 0
+  },
+  "verification_level": "DECLARED",
+  "economics": {
+    "basis": "source-list-price-estimate",
+    "with_skill": {
+      "call_count": 6,
+      "mean_input_tokens": null,
+      "mean_output_tokens": null,
+      "mean_cost_usd_per_call": 2.468665,
+      "median_wall_ms": 57500,
+      "wall_ms_p25": 52000,
+      "wall_ms_p75": 84000,
+      "wall_ms_iqr": 32000
+    },
+    "baseline": {
+      "call_count": 6,
+      "mean_input_tokens": null,
+      "mean_output_tokens": null,
+      "mean_cost_usd_per_call": 1.621506,
+      "median_wall_ms": 50500,
+      "wall_ms_p25": 46000,
+      "wall_ms_p75": 60000,
+      "wall_ms_iqr": 14000
+    },
+    "skill_incremental_cost_usd_per_call": 0.847159,
+    "skill_incremental_cost_usd_per_1k_calls": 847.159,
+    "output_tokens_delta": null,
+    "median_wall_ms_delta": 7000,
+    "judge_excluded": true
+  },
+  "receipt_hash": "2d0b6cae07d36e732a66074f6d113bfed2e3f35c20b4635a62307ce36b8cccbd"
+}

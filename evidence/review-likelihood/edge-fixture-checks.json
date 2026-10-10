@@ -1,0 +1,22 @@
+[
+  {
+    "case": "case-107",
+    "probe": {
+      "accepted": [
+        true,
+        true
+      ],
+      "remaining": 0
+    }
+  },
+  {
+    "case": "case-108",
+    "probe": {
+      "accepted": [
+        true,
+        true
+      ],
+      "remaining": 0
+    }
+  }
+]

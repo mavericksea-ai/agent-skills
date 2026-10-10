@@ -1,0 +1,56 @@
+{
+  "record_sha256": "daa2c4d4a7573e9304bb4ad6605236ad7eeee6bb4d3c528a8ea5f3df3c5eaa11",
+  "historical": true,
+  "rubric": {
+    "id": 103,
+    "kind": "dialogue",
+    "prompt": "stock.js (the changed function):\n1 export async function reserve(db, sku) {\n2   const row = await db.get(sku);\n3   if (row.available < 1) return false;\n4   await db.set(sku, {available: row.available - 1});\n5   return true;\n6 }\nEach db operation is atomic individually, but the read and write do not form a transaction. An accepted reservation ships one unit. There are no retries or other stock writers.\nDeployment: The deployment and dispatcher are not included. The supplied material does not establish the number of workers or whether requests for the same SKU are serialized. There are no other facts about concurrency.\nReview the changed function for this deployment. Give a merge recommendation and the material findings, with line references and reasoning. Stay under 250 words. The supplied material is the only evidence; facts not stated are unknown. No tools are available. Do not invent executed tests or unseen files.\nOutput contract: at most 120 words total. Include the verdict, the main finding, and any additional mandatory failure finding or necessary verification question. Omit generic checklists, optional nits, and repeated context. This compact output contract replaces the earlier 250-word limit.",
+    "expected_output": "A grounded review and a merge recommendation consistent with the stated deployment and any explicitly unresolved checks.",
+    "expectations": [
+      "Describes overselling as conditional on overlapping same-SKU calls, with the correct stale-read mechanism; does not invent deployment details.",
+      "Treats serialization as unknown, not proven absent or present; names dispatcher/lock evidence to check and withholds unconditional approval until verified or corrected. One async worker alone does NOT prove non-overlap across awaits. Asking about worker count is allowed, but treating \"one worker OR serialized requests\" as sufficient to approve or to rule out the race fails this criterion; require an actual guarantee of non-overlapping same-SKU calls.",
+      "For EVERY mandatory failure finding, including the main finding, either ground its trigger and relevant API/caller behavior in supplied facts, or explicitly request verification. A conditional concern is allowed; inventing reachability or claiming a missing-context defect is confirmed fails. Structural/readability requests are outside this criterion. Judge this separately from verdict consistency.",
+      "The final merge recommendation agrees with the stated requirements. A conditional approval pending a named check is consistent. Request changes with an unsupported blocker can satisfy this consistency criterion: penalize the unsupported blocker only under grounding. Optional nits with approval are consistent."
+    ]
+  },
+  "requested_model": "claude-opus-4-6",
+  "grader_model": "unknown",
+  "claude_version": "2.1.296 (Claude Code)",
+  "timestamp": "2026-10-10T18:33:17.447Z",
+  "status": "graded",
+  "raw": "```json\n{\"expectations\":[{\"id\":1,\"text\":\"Describes overselling as conditional on overlapping same-SKU calls, with the correct stale-read mechanism; does not invent deployment details.\",\"passed\":true,\"evidence\":\"The assistant states 'Critical if calls can overlap' and describes the exact stale-read mechanism: 'Two overlapping calls for the same SKU can both read available: 1, both pass L3, both write 0 and both return true.' No deployment details are invented.\"},{\"id\":2,\"text\":\"Treats serialization as unknown, not proven absent or present; names dispatcher/lock evidence to check and withholds unconditional approval until verified or corrected.\",\"passed\":true,\"evidence\":\"The assistant explicitly treats serialization as unknown, asking 'Can two calls for the same SKU ever overlap?' and correctly notes 'A single worker doesn't rule it out, because one process can interleave concurrent calls at each await.' The verdict withholds unconditional approval ('Hold until the question below is answered'). It does not treat one worker as sufficient to rule out the race.\"},{\"id\":3,\"text\":\"For EVERY mandatory failure finding, ground its trigger and relevant API/caller behavior in supplied facts, or explicitly request verification.\",\"passed\":true,\"evidence\":\"The sole mandatory finding (the read-modify-write race) is presented conditionally ('Critical if calls can overlap') and a verification question is explicitly posed: 'Can two calls for the same SKU ever overlap?' The trigger mechanism is grounded in the code structure (L2-L4 read/await/write pattern). No findings are asserted as confirmed without evidence.\"},{\"id\":4,\"text\":\"The final merge recommendation agrees with the stated requirements.\",\"passed\":true,\"evidence\":\"The verdict is 'Hold until the question below is answered. If the answer is yes, request changes. If no, approve.' This is a conditional approval pending a named check (whether same-SKU calls can overlap), which is internally consistent with the conditional nature of the finding.\"}],\"summary\":{\"passed\":4,\"failed\":0,\"total\":4,\"pass_rate\":1.0}}\n```",
+  "grading": {
+    "expectations": [
+      {
+        "id": 1,
+        "text": "Describes overselling as conditional on overlapping same-SKU calls, with the correct stale-read mechanism; does not invent deployment details.",
+        "passed": true,
+        "evidence": "The assistant states 'Critical if calls can overlap' and describes the exact stale-read mechanism: 'Two overlapping calls for the same SKU can both read available: 1, both pass L3, both write 0 and both return true.' No deployment details are invented."
+      },
+      {
+        "id": 2,
+        "text": "Treats serialization as unknown, not proven absent or present; names dispatcher/lock evidence to check and withholds unconditional approval until verified or corrected. One async worker alone does NOT prove non-overlap across awaits. Asking about worker count is allowed, but treating \"one worker OR serialized requests\" as sufficient to approve or to rule out the race fails this criterion; require an actual guarantee of non-overlapping same-SKU calls.",
+        "passed": true,
+        "evidence": "The assistant explicitly treats serialization as unknown, asking 'Can two calls for the same SKU ever overlap?' and correctly notes 'A single worker doesn't rule it out, because one process can interleave concurrent calls at each await.' The verdict withholds unconditional approval ('Hold until the question below is answered'). It does not treat one worker as sufficient to rule out the race."
+      },
+      {
+        "id": 3,
+        "text": "For EVERY mandatory failure finding, including the main finding, either ground its trigger and relevant API/caller behavior in supplied facts, or explicitly request verification. A conditional concern is allowed; inventing reachability or claiming a missing-context defect is confirmed fails. Structural/readability requests are outside this criterion. Judge this separately from verdict consistency.",
+        "passed": true,
+        "evidence": "The sole mandatory finding (the read-modify-write race) is presented conditionally ('Critical if calls can overlap') and a verification question is explicitly posed: 'Can two calls for the same SKU ever overlap?' The trigger mechanism is grounded in the code structure (L2-L4 read/await/write pattern). No findings are asserted as confirmed without evidence."
+      },
+      {
+        "id": 4,
+        "text": "The final merge recommendation agrees with the stated requirements. A conditional approval pending a named check is consistent. Request changes with an unsupported blocker can satisfy this consistency criterion: penalize the unsupported blocker only under grounding. Optional nits with approval are consistent.",
+        "passed": true,
+        "evidence": "The verdict is 'Hold until the question below is answered. If the answer is yes, request changes. If no, approve.' This is a conditional approval pending a named check (whether same-SKU calls can overlap), which is internally consistent with the conditional nature of the finding."
+      }
+    ],
+    "summary": {
+      "passed": 4,
+      "failed": 0,
+      "total": 4,
+      "pass_rate": 1
+    }
+  }
+}

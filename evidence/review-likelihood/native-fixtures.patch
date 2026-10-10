@@ -1,0 +1,81 @@
+--- a/evals/cases/code-review-and-quality.json
++++ b/evals/cases/code-review-and-quality.json
+@@ -44,6 +44,78 @@
+         "Security of user input is explicitly considered for the new endpoint",
+         "The review leads with high-leverage findings rather than nits"
+       ]
++    },
++    {
++      "id": 101,
++      "kind": "dialogue",
++      "prompt": "stock.js (the changed function):\n1 export async function reserve(db, sku) {\n2   const row = await db.get(sku);\n3   if (row.available < 1) return false;\n4   await db.set(sku, {available: row.available - 1});\n5   return true;\n6 }\nEach db operation is atomic individually, but the read and write do not form a transaction. An accepted reservation ships one unit. There are no retries or other stock writers.\nDeployment: The service runs two workers which may call reserve concurrently for the same SKU. A SKU can have available=1.\nReview the changed function for this deployment. Give a merge recommendation and the material findings, with line references and reasoning. Stay under 250 words. The supplied material is the only evidence; facts not stated are unknown. No tools are available. Do not invent executed tests or unseen files.\nOutput contract: at most 120 words total. Include the verdict, the main finding, and any additional mandatory failure finding or necessary verification question. Omit generic checklists, optional nits, and repeated context. This compact output contract replaces the earlier 250-word limit.",
++      "expected_output": "A grounded review and a merge recommendation consistent with the stated deployment and any explicitly unresolved checks.",
++      "expectations": [
++        "Identifies the reachable oversell, correctly explains two reads of 1 and two writes of 0 with two successful reservations; does not claim that stale reads decrement the stored value to -1.",
++        "Requires the reachable race to be fixed before merge, with atomic conditional update or correct exclusion spanning the full read/write across workers.",
++        "For EVERY mandatory failure finding, including the main finding, either ground its trigger and relevant API/caller behavior in supplied facts, or explicitly request verification. A conditional concern is allowed; inventing reachability or claiming a missing-context defect is confirmed fails. Structural/readability requests are outside this criterion. Judge this separately from verdict consistency.",
++        "The final merge recommendation agrees with the stated requirements. A conditional approval pending a named check is consistent. Request changes with an unsupported blocker can satisfy this consistency criterion: penalize the unsupported blocker only under grounding. Optional nits with approval are consistent."
++      ]
++    },
++    {
++      "id": 102,
++      "kind": "dialogue",
++      "prompt": "stock.js (the changed function):\n1 export async function reserve(db, sku) {\n2   const row = await db.get(sku);\n3   if (row.available < 1) return false;\n4   await db.set(sku, {available: row.available - 1});\n5   return true;\n6 }\nEach db operation is atomic individually, but the read and write do not form a transaction. An accepted reservation ships one unit. There are no retries or other stock writers.\nDeployment: This deployment has exactly one worker. Its verified dispatcher holds a process-wide mutex from before calling reserve until its promise settles, including across both awaits. Every reserve call goes through that dispatcher. No other process or code path accesses this store. These are enforced invariants, not assumptions.\nReview the changed function for this deployment. Give a merge recommendation and the material findings, with line references and reasoning. Stay under 250 words. The supplied material is the only evidence; facts not stated are unknown. No tools are available. Do not invent executed tests or unseen files.\nOutput contract: at most 120 words total. Include the verdict, the main finding, and any additional mandatory failure finding or necessary verification question. Omit generic checklists, optional nits, and repeated context. This compact output contract replaces the earlier 250-word limit.",
++      "expected_output": "A grounded review and a merge recommendation consistent with the stated deployment and any explicitly unresolved checks.",
++      "expectations": [
++        "Recognizes that the verified mutex across both awaits and exclusive store access prevent the race; single-threaded JavaScript alone is not the reason.",
++        "Does not require fixing this prevented race before merge. Future concurrency concerns, if raised, are conditional and nonblocking.",
++        "For EVERY mandatory failure finding, including the main finding, either ground its trigger and relevant API/caller behavior in supplied facts, or explicitly request verification. A conditional concern is allowed; inventing reachability or claiming a missing-context defect is confirmed fails. Structural/readability requests are outside this criterion. Judge this separately from verdict consistency.",
++        "The final merge recommendation agrees with the stated requirements. A conditional approval pending a named check is consistent. Request changes with an unsupported blocker can satisfy this consistency criterion: penalize the unsupported blocker only under grounding. Optional nits with approval are consistent."
++      ]
++    },
++    {
++      "id": 103,
++      "kind": "dialogue",
++      "prompt": "stock.js (the changed function):\n1 export async function reserve(db, sku) {\n2   const row = await db.get(sku);\n3   if (row.available < 1) return false;\n4   await db.set(sku, {available: row.available - 1});\n5   return true;\n6 }\nEach db operation is atomic individually, but the read and write do not form a transaction. An accepted reservation ships one unit. There are no retries or other stock writers.\nDeployment: The deployment and dispatcher are not included. The supplied material does not establish the number of workers or whether requests for the same SKU are serialized. There are no other facts about concurrency.\nReview the changed function for this deployment. Give a merge recommendation and the material findings, with line references and reasoning. Stay under 250 words. The supplied material is the only evidence; facts not stated are unknown. No tools are available. Do not invent executed tests or unseen files.\nOutput contract: at most 120 words total. Include the verdict, the main finding, and any additional mandatory failure finding or necessary verification question. Omit generic checklists, optional nits, and repeated context. This compact output contract replaces the earlier 250-word limit.",
++      "expected_output": "A grounded review and a merge recommendation consistent with the stated deployment and any explicitly unresolved checks.",
++      "expectations": [
++        "Describes overselling as conditional on overlapping same-SKU calls, with the correct stale-read mechanism; does not invent deployment details.",
++        "Treats serialization as unknown, not proven absent or present; names dispatcher/lock evidence to check and withholds unconditional approval until verified or corrected. One async worker alone does NOT prove non-overlap across awaits. Asking about worker count is allowed, but treating \"one worker OR serialized requests\" as sufficient to approve or to rule out the race fails this criterion; require an actual guarantee of non-overlapping same-SKU calls.",
++        "For EVERY mandatory failure finding, including the main finding, either ground its trigger and relevant API/caller behavior in supplied facts, or explicitly request verification. A conditional concern is allowed; inventing reachability or claiming a missing-context defect is confirmed fails. Structural/readability requests are outside this criterion. Judge this separately from verdict consistency.",
++        "The final merge recommendation agrees with the stated requirements. A conditional approval pending a named check is consistent. Request changes with an unsupported blocker can satisfy this consistency criterion: penalize the unsupported blocker only under grounding. Optional nits with approval are consistent."
++      ]
++    },
++    {
++      "id": 104,
++      "kind": "dialogue",
++      "prompt": "search.js (changed function):\n1 export async function search(db, name) {\n2   return db.query('SELECT id FROM users WHERE name = $1', [name]);\n3 }\nVerified driver contract: $1 is a bound VALUE parameter. The driver sends query text and parameter values separately to PostgreSQL, which does not parse the value as SQL syntax. name is attacker-controlled, including quotes and SQL fragments.\nThis is a database helper. Authentication, authorization, schema, and error handling outside this function are not supplied. Review this change using only these facts. Give material findings with line references and a merge recommendation, under 250 words. Distinguish confirmed failures from checks requiring missing context. No tools are available.\nOutput contract: at most 120 words total. Include the verdict, the main finding, and any additional mandatory failure finding or necessary verification question. Omit generic checklists, optional nits, and repeated context. This compact output contract replaces the earlier 250-word limit.",
++      "expected_output": "A grounded injection assessment that distinguishes enforced binding, reachable interpolation, and unknown driver behavior.",
++      "expectations": [
++        "Recognizes that attacker-controlled name is a bound value and cannot alter SQL syntax under the verified driver contract.",
++        "Does not demand escaping or sanitization to fix SQL injection at line 2. Any alternative concern must remain grounded; no mandatory injection fix is justified.",
++        "For EVERY mandatory failure finding, including the main finding, either ground its trigger and relevant API/caller behavior in supplied facts, or explicitly request verification. A conditional concern is allowed; inventing reachability or claiming a missing-context defect is confirmed fails. Structural/readability requests are outside this criterion. Judge this separately from verdict consistency.",
++        "The final merge recommendation agrees with the stated requirements. A conditional approval pending a named check is consistent. Request changes with an unsupported blocker can satisfy this consistency criterion: penalize the unsupported blocker only under grounding. Optional nits with approval are consistent."
++      ]
++    },
++    {
++      "id": 105,
++      "kind": "dialogue",
++      "prompt": "search.js (changed function):\n1 export async function search(db, name) {\n2   return db.query(\"SELECT id FROM users WHERE name = '\" + name + \"'\");\n3 }\nVerified contract: db.query executes the supplied SQL string directly against PostgreSQL. name is attacker-controlled with no validation; values containing quotes reach this call. The connection can read all user rows.\nThis is a database helper. Authentication, authorization, schema, and error handling outside this function are not supplied. Review this change using only these facts. Give material findings with line references and a merge recommendation, under 250 words. Distinguish confirmed failures from checks requiring missing context. No tools are available.\nOutput contract: at most 120 words total. Include the verdict, the main finding, and any additional mandatory failure finding or necessary verification question. Omit generic checklists, optional nits, and repeated context. This compact output contract replaces the earlier 250-word limit.",
++      "expected_output": "A grounded injection assessment that distinguishes enforced binding, reachable interpolation, and unknown driver behavior.",
++      "expectations": [
++        "Identifies reachable SQL injection in the concatenated string at line 2; gives a valid mechanism such as input ' OR '1'='1 yielding a WHERE condition true for all rows.",
++        "Requires replacing interpolation with true bound value parameters before merge; does not dismiss attacker-chosen inputs as unlikely or rely on generic escaping as the primary fix.",
++        "For EVERY mandatory failure finding, including the main finding, either ground its trigger and relevant API/caller behavior in supplied facts, or explicitly request verification. A conditional concern is allowed; inventing reachability or claiming a missing-context defect is confirmed fails. Structural/readability requests are outside this criterion. Judge this separately from verdict consistency.",
++        "The final merge recommendation agrees with the stated requirements. A conditional approval pending a named check is consistent. Request changes with an unsupported blocker can satisfy this consistency criterion: penalize the unsupported blocker only under grounding. Optional nits with approval are consistent."
++      ]
++    },
++    {
++      "id": 106,
++      "kind": "dialogue",
++      "prompt": "search.js (changed function):\n1 export async function search(db, name) {\n2   return db.query('SELECT id FROM users WHERE name = $1', [name]);\n3 }\nname is attacker-controlled. db is a custom wrapper whose implementation and driver contract are not supplied. The material does not establish whether the wrapper truly binds parameters or performs unsafe text substitution.\nThis is a database helper. Authentication, authorization, schema, and error handling outside this function are not supplied. Review this change using only these facts. Give material findings with line references and a merge recommendation, under 250 words. Distinguish confirmed failures from checks requiring missing context. No tools are available.\nOutput contract: at most 120 words total. Include the verdict, the main finding, and any additional mandatory failure finding or necessary verification question. Omit generic checklists, optional nits, and repeated context. This compact output contract replaces the earlier 250-word limit.",
++      "expected_output": "A grounded injection assessment that distinguishes enforced binding, reachable interpolation, and unknown driver behavior.",
++      "expectations": [
++        "Treats injection safety as dependent on the missing wrapper behavior. Does not claim $1 syntax alone proves binding, nor claim the wrapper is definitely unsafe.",
++        "Requests the wrapper implementation/driver contract or equivalent specific verification of true binding; makes its merge recommendation conditional on resolving this security-relevant uncertainty.",
++        "For EVERY mandatory failure finding, including the main finding, either ground its trigger and relevant API/caller behavior in supplied facts, or explicitly request verification. A conditional concern is allowed; inventing reachability or claiming a missing-context defect is confirmed fails. Structural/readability requests are outside this criterion. Judge this separately from verdict consistency.",
++        "The final merge recommendation agrees with the stated requirements. A conditional approval pending a named check is consistent. Request changes with an unsupported blocker can satisfy this consistency criterion: penalize the unsupported blocker only under grounding. Optional nits with approval are consistent."
++      ]
+     }
+   ]
+ }

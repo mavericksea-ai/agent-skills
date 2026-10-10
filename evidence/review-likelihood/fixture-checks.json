@@ -1,0 +1,42 @@
+[
+  {
+    "case": "case-101",
+    "setup_exit": 0,
+    "probe": {
+      "accepted": [
+        true,
+        true
+      ],
+      "remaining": 0
+    },
+    "probe_exit": 0
+  },
+  {
+    "case": "case-102",
+    "setup_exit": 0,
+    "probe": {
+      "accepted": [
+        true,
+        false
+      ],
+      "remaining": 0
+    },
+    "probe_exit": 0
+  },
+  {
+    "case": "case-103",
+    "setup_exit": 0
+  },
+  {
+    "case": "case-104",
+    "setup_exit": 0
+  },
+  {
+    "case": "case-105",
+    "setup_exit": 0
+  },
+  {
+    "case": "case-106",
+    "setup_exit": 0
+  }
+]
